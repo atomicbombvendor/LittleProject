@@ -1,6 +1,8 @@
 package multithreading;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -78,8 +80,20 @@ public class MuchThreadDown {
                 URL url = new URL(path);
 
                 File downThreadFile = new File(targetFilePath, "downThread_" + threadId + ".dt");
-                
+                RandomAccessFile downThreadStream = null;
+                if(downThreadFile.exists()){
+                    downThreadFile = new File(downThreadFile, "rwd");
+                    String startIndex_str = downThreadStream.readLine();
+                    this.startIndex = Integer.parseInt(startIndex_str);//set download point
+                }else{
+                    downThreadStream = new RandomAccessFile(downThreadFile, "rwd");
+                }
+
             } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
