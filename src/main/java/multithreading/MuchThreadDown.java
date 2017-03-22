@@ -10,8 +10,8 @@ import java.net.URL;
  */
 public class MuchThreadDown {
 
-    private String path = "http://117.169.69.238/mp3.9ku.com/m4a/186947.m4a";
-    private String targetFilePath = "/"; //download path
+    private String path = "http://sw.bos.baidu.com/sw-search-sp/software/a818cd14ce5ee/npp_7.3.3_Installer.exe";
+    private String targetFilePath = "C:\\Users\\eli9\\Desktop"; //download path
     private int threadCount = 3;
 
     /**
@@ -52,7 +52,7 @@ public class MuchThreadDown {
                 int endIndex = (threadId+1)*blockSize-1;
                 if(threadId == threadCount - 1){
                     endIndex = connectionLength-1;
-                }
+                }//Set start Index and end Index
                 new DownloadThread(threadId, startIndex, endIndex).start();//Start to download
             }
         }
@@ -79,6 +79,7 @@ public class MuchThreadDown {
                 File downThreadFile = new File(targetFilePath, "downThread_" + threadId + ".dt");
                 RandomAccessFile downThreadStream = null;
                 if (downThreadFile.exists()) {
+                    System.out.println("downThreadFile exists");
                     downThreadStream = new RandomAccessFile(downThreadFile, "rwd");
                     String startIndex_str = downThreadStream.readLine();
                     this.startIndex = Integer.parseInt(startIndex_str);//set download point
@@ -92,7 +93,7 @@ public class MuchThreadDown {
 
                 //set the top information/ Range:
                 connection.setRequestProperty("Range", "bytes=" + startIndex + "-" + endIndex);
-                System.out.println("Thread_" + threadId + "Start Index " + startIndex + "End Index " +
+                System.out.println("Thread_" + threadId + " Start Index:" + startIndex + " End Index:" +
                         endIndex);
 
                 if (connection.getResponseCode() == 206) {//206 Request for part resource succeed
