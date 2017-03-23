@@ -83,6 +83,7 @@ public class MuchThreadDown {
                     downThreadStream = new RandomAccessFile(downThreadFile, "rwd");
                     String startIndex_str = downThreadStream.readLine();
                     this.startIndex = Integer.parseInt(startIndex_str);//set download point
+                    //There have a problem
                 } else {
                     downThreadStream = new RandomAccessFile(downThreadFile, "rwd");
                 }

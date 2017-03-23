@@ -37,6 +37,7 @@ public class RandomAccessFileTest {
             //会持续的读下去，直至file end
             String buff = randomAccessFile.readLine();
             System.out.println(buff);
+            System.out.println(Integer.parseInt(buff));
             String buff2 = randomAccessFile.readLine();
             System.out.println(buff2);
         }catch (FileNotFoundException e) {
@@ -110,8 +111,8 @@ public class RandomAccessFileTest {
         String path = "C:\\Users\\eli9\\Desktop\\test.txt"; //download path
         int seekPoint = 2;
         //readRandomPosition(path,seekPoint);
-        //testReadLine(path,seekPoint);
+        testReadLine(path,seekPoint);
         //writeRandom(path, seekPoint);
-        insertRandom(path,5,"big dream");
+        //insertRandom(path,5,"big dream");
     }
 }
