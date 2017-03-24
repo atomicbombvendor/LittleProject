@@ -113,13 +113,6 @@ public class XOIAccess {
 	}
 
 	public static void main(String[] args) throws Exception {
-		XOIAccess xoiAccess = new XOIAccess("http://funddata.xoi.morningstar.com/XOISuite/Login.aspx",
-				"GlobalEquityData@morningstar.com", "GXy1q88E");
 		
-		String data = xoiAccess.getXmlData("http://funddata.xoi.morningstar.com/xoisuite/DataOutput.aspx?Package=DataBank&Id=FOUSA00CGP&IdType=FundShareClassId&Content=MonthEndTrailingPerformance");
-		System.out.println("data:\n" + data);
-		
-		String error = xoiAccess.getXmlData("http://funddata.xoi.morningstar.com/xoisuite/DataOutput.aspx?Package=DataBank&Id=FOUSA00CGP&IdType=FundShareClassId&Content=MonthEndTrailingPerformance1");
-		System.out.println("error:\n" + error);
 	}
 }
