@@ -83,6 +83,7 @@ public class MuchThreadDown {
                     downThreadStream = new RandomAccessFile(downThreadFile, "rwd");
                     String startIndex_str = downThreadStream.readLine();
                     this.startIndex = Integer.parseInt(startIndex_str);//set download point
+                    System.out.println("new Start Index: " + startIndex_str);
                     //There have a problem
                 } else {
                     downThreadStream = new RandomAccessFile(downThreadFile, "rwd");
@@ -92,29 +93,27 @@ public class MuchThreadDown {
                 connection.setRequestMethod("GET");
                 connection.setConnectTimeout(10000);
 
-                //set the top information/ Range:
+                //set the top information
+                //set key-value
                 connection.setRequestProperty("Range", "bytes=" + startIndex + "-" + endIndex);
                 System.out.println("Thread_" + threadId + " Start Index:" + startIndex + " End Index:" +
                         endIndex);
 
                 if (connection.getResponseCode() == 206) {//206 Request for part resource succeed
                     InputStream inputStream = connection.getInputStream();
+                    //This is target file.
                     RandomAccessFile randomAccessFile = new RandomAccessFile(
                             new File(targetFilePath, getFileName(url)), "rw");//get file that had been created
+                    //Set seek point from full file.
                     randomAccessFile.seek(startIndex);
 
-                    /**
-                     * write net stream to local file
-                     */
+                     // write net stream to local file
                     byte[] buffer = new byte[1024];
                     int length = -1;
                     int total = 0;//Record size that this time download
                     while ((length = inputStream.read(buffer)) > 0) {
                         randomAccessFile.write(buffer, 0, length);
                         total += length;
-                        /**
-                         * keep current position to file
-                         */
                         downThreadStream.seek(0);
                         downThreadStream.write((startIndex + total + "").getBytes("UTF-8"));
                     }
