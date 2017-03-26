@@ -57,22 +57,4 @@ public class PropertiesEditor {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        String path = "cdctables.properties";
-        PropertiesEditor p = new PropertiesEditor(path);
-        String primaryKey = "CentralEndData.dbo_QuantitativeData_CT.PrimaryKey";
-        String fields = "CentralEndData.dbo_QuantitativeData_CT.Fields";
-        /**
-         * primaryKey: CompanyId;TrailingType;Period
-         * primaryKey2: null
-         * not exits hierarchy in key
-         */
-        Arrays.stream(p.getPrimaryKey(primaryKey)).forEach(s -> System.out.println(s));
-
-        String[] str = p.getFields(fields);
-        //for (String s: str) {System.out.println(s);}
-        //System.out.println(Arrays.asList(str));
-        Arrays.stream(str).forEach(s-> System.out.println(s));
-    }
 }
