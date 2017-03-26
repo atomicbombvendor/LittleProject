@@ -3,9 +3,9 @@ package Properties;
 /**
  * Created by eli9 on 3/24/2017.
  */
-public class Table {
+public class TableEntity {
     private String [] PrimaryKeys;
-    private String [] fileds;
+    private String [] fields;
     private String timestamp;
 
     public String[] getPrimaryKeys() {
@@ -16,12 +16,12 @@ public class Table {
         PrimaryKeys = primaryKeys;
     }
 
-    public String[] getFileds() {
-        return fileds;
+    public String[] getFields() {
+        return fields;
     }
 
-    public void setFileds(String[] fileds) {
-        this.fileds = fileds;
+    public void setFields(String[] fields) {
+        this.fields = fields;
     }
 
     public String getTimestamp() {
