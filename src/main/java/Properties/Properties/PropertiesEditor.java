@@ -1,4 +1,4 @@
-package Properties.PropertiesEditor;
+package Properties.Properties;
 
 /**
  * Created by eli9 on 3/27/2017.

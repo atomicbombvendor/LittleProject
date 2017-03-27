@@ -1,8 +1,8 @@
 package Properties;
 
 import Properties.Entity.TableStructureEntity;
-import Properties.TableStructureService.TableStructureService;
-import Properties.TableStructureService.TableStructureServiceImpl;
+import Properties.Process.TableStructureService;
+import Properties.Process.TableStructureServiceImpl;
 import org.junit.Test;
 import java.util.Arrays;
 
@@ -26,7 +26,7 @@ public class TableStructureServiceTest {
         System.out.println("11" + path1);
 //        String path = "/src/main/java/resource/cdctables.properties";
 //        String tableName = "CentralEndData.cdc.dbo_PriceTrend_CT";
-//        TableStructureService tableStructureService = new TableStructureServiceImpl(path,tableName);
+//        Process tableStructureService = new TableStructureServiceImpl(path,tableName);
 //        System.out.println(tableStructureService.getSql());
     }
 

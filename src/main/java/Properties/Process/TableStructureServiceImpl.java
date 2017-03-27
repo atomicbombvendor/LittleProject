@@ -1,9 +1,9 @@
-package Properties.TableStructureService;
+package Properties.Process;
 
 import Properties.Entity.TableStructureEntity;
 import Properties.Entity.TableStructureEntityImpl;
-import Properties.PropertiesEditor.PropertiesEditor;
-import Properties.PropertiesEditor.PropertiesEditorImpl;
+import Properties.Properties.PropertiesEditor;
+import Properties.Properties.PropertiesEditorImpl;
 
 /**
  * Created by ZZ on 2017/3/26.

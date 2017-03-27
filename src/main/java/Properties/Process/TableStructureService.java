@@ -1,4 +1,4 @@
-package Properties.TableStructureService;
+package Properties.Process;
 
 import Properties.Entity.TableStructureEntity;
 

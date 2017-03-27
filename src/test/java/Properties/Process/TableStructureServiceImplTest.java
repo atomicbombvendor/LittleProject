@@ -1,8 +1,6 @@
-package Properties.TableStructureService;
+package Properties.Process;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by eli9 on 3/27/2017.

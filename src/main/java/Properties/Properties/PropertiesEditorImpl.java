@@ -1,4 +1,4 @@
-package Properties.PropertiesEditor;
+package Properties.Properties;
 
 import java.io.*;
 import java.util.Properties;

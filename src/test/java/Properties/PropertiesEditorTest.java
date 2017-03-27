@@ -1,6 +1,6 @@
 package Properties;
 
-import Properties.PropertiesEditor.PropertiesEditorImpl;
+import Properties.Properties.PropertiesEditorImpl;
 import org.junit.Test;
 import java.util.Arrays;
 
