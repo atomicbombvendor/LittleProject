@@ -1,10 +1,9 @@
 package Properties;
 
+import Properties.PropertiesEditor.PropertiesEditorImpl;
 import org.junit.Test;
 
 import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by ZZ on 2017/3/26.
@@ -13,7 +12,7 @@ public class PropertiesEditorTest {
     @Test
     public void getPrimaryKey() throws Exception {
             String path = "cdctables.properties";
-            PropertiesEditor p = new PropertiesEditor(path);
+            PropertiesEditorImpl p = new PropertiesEditorImpl(path);
             String primaryKey = "CentralEndData.dbo_QuantitativeData_CT.PrimaryKey";
             String fields = "CentralEndData.dbo_QuantitativeData_CT.Fields";
             /**
