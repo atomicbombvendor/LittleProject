@@ -73,11 +73,25 @@ public class ExceptionOrder {
         return in;
     }
 
+    // catch块中没有return,会使用最后的return;而且程序不会中断
+    //有异常也不会中断
+    public static boolean test5(){
+        InputStream in;
+        try{
+            in = new FileInputStream(file);
+        }catch (Exception e){
+            e.printStackTrace();
+            //return false;
+        }
+        System.out.println("end");
+        return true;
+    }
 
     public static void main(String[] args) {
         //System.out.println(test1());
         //System.out.println(test2());
-        System.out.println(test3());
+        //System.out.println(test3());
         //System.out.println(test4());
+        System.out.println(test5());
     }
 }

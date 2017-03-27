@@ -1,9 +1,9 @@
-package Properties;
+package Properties.Entity;
 
 /**
  * Created by eli9 on 3/24/2017.
  */
-public class TableEntity {
+public class TableStructureEntityImpl implements TableStructureEntity {
     private String [] PrimaryKeys;
     private String [] fields;
     private String timestamp;
