@@ -134,17 +134,17 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>equityapi.etlprocess</groupId>
+            <artifactId>equityapi.etlprocess</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4 &ndash;&gt;-->

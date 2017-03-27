@@ -10,3 +10,4 @@ buildNumber.properties
 .idea
 LittleProject.iml
 littleproject.iml
+classes/
