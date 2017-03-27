@@ -1,11 +1,7 @@
 package Properties;
 
 import org.junit.Test;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by ZZ on 2017/3/26.
