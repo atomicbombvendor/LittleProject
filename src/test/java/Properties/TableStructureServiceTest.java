@@ -4,7 +4,6 @@ import Properties.Entity.TableStructureEntity;
 import Properties.TableStructureService.TableStructureService;
 import Properties.TableStructureService.TableStructureServiceImpl;
 import org.junit.Test;
-
 import java.util.Arrays;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Arrays;
 public class TableStructureServiceTest {
     @Test
     public void setProperty() throws Exception {
-        String path = "cdctables.properties";
+        String path = "resource\\cdctables.properties";
         String tableName = "CentralEndData.cdc.dbo_PriceTrend_CT";
         TableStructureService tableStructureService = new TableStructureServiceImpl(path,tableName);
         String key = tableName + ".TimeStamp";
@@ -23,15 +22,17 @@ public class TableStructureServiceTest {
 
     @Test
     public void getSql() throws Exception {
-        String path = "cdctables.properties";
-        String tableName = "CentralEndData.cdc.dbo_PriceTrend_CT";
-        TableStructureService tableStructureService = new TableStructureServiceImpl(path,tableName);
-        System.out.println(tableStructureService.getSql());
+        String path1 =Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        System.out.println("11" + path1);
+//        String path = "/src/main/java/resource/cdctables.properties";
+//        String tableName = "CentralEndData.cdc.dbo_PriceTrend_CT";
+//        TableStructureService tableStructureService = new TableStructureServiceImpl(path,tableName);
+//        System.out.println(tableStructureService.getSql());
     }
 
     @Test
     public void getTableEntity() throws Exception {
-        String path = "cdctables.properties";
+        String path = "resource\\cdctables.properties";
         String tableName = "CentralEndData.cdc.dbo_PriceTrend_CT";
         TableStructureService tableStructureService = new TableStructureServiceImpl(path, tableName);
         TableStructureEntity entity = tableStructureService.getTableStructureEntity();
