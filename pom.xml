@@ -146,6 +146,11 @@
             <artifactId>equityapi.etlprocess</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+        </dependency>
 
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4 &ndash;&gt;-->
         <!--<dependency>-->

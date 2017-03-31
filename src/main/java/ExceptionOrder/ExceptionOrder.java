@@ -87,11 +87,30 @@ public class ExceptionOrder {
         return true;
     }
 
+    public static int test6(){
+        InputStream in;
+        try {
+            in = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return 2;
+        }
+        System.out.println("End");
+        return 1;
+    }
+
+    public static void test6_1(){
+        if(test6() == 2){
+            System.out.println("GET");
+        }
+    }
     public static void main(String[] args) {
         //System.out.println(test1());
         //System.out.println(test2());
         //System.out.println(test3());
         //System.out.println(test4());
-        System.out.println(test5());
+        //System.out.println(test5());
+        //System.out.println(test6_1());
+        test6_1();
     }
 }

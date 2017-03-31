@@ -1,6 +1,6 @@
 package Properties.Process;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
  * Created by eli9 on 3/27/2017.
