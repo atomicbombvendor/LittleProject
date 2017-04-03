@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.company" />
+
+    <bean id="propertiesFactory" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="propertiesFactory" />
+    </bean>
+
+    <!--<bean id="sqlMartDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">-->
+        <!--<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />-->
+        <!--<property name="jdbcUrl" value="${jdbc.sqlmart.jdbcUrl}" />-->
+        <!--<property name="user" value="${jdbc.sqlmart.user}" />-->
+        <!--<property name="password" value="${jdbc.sqlmart.password}" />-->
+        <!--<property name="maxPoolSize" value="100" />-->
+        <!--<property name="minPoolSize" value="5" />-->
+        <!--<property name="initialPoolSize" value="10" />-->
+        <!--<property name="maxIdleTime" value="25" />-->
+        <!--<property name="acquireIncrement" value="5" />-->
+    <!--</bean>-->
+    <!--<bean id="sqlMartJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">-->
+        <!--<property name="dataSource" ref="sqlMartDataSource" />-->
+    <!--</bean>-->
+
+    <!--<bean id="testA" class="com.morningscompanystar.Dao.TestAestA">-->
+        <!--<property name="b" ref="testB"/>-->
+    <!--</bean>-->
+    <!--<bean id="testB" class="com.morningscompanystar.Dao.TestBestB">-->
+    <!--</bean>-->
+</beans>

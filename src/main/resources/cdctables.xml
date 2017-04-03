@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CDCtables>
+    <CentralEndData>
+    <dbo_QuantitativeData_CT>
+        <primarykey>CompanyId</primarykey>
+        <primarykey>AsOfDate</primarykey>
+        <filed>QuantitativeMoat</filed>
+        <filed>QuantitativeMoatLabel</filed>
+        <filed>QuantitativeValuation</filed>
+        <filed>QuantitativeValuationLabel</filed>
+        <filed>QuantitativeValuationUncertainty</filed>
+        <filed>QuantitativeValuationUncertaintyLabel</filed>
+        <filed>QuantitativeFinancialHealth</filed>
+        <filed>QuantitativeFinancialHealthLabel</filed>
+        <filed>SolvencyScore</filed>
+        <filed>QuantitativeCreditScore</filed>
+        <filed>QuantitativeCreditRating</filed>
+        <filed>CreateDate</filed>
+        <filed>UpdateDate</filed>
+        <filed>QuantitativeDataCalculationDateAndTime</filed>
+        <timestamp>2017/03/24 17:05:12</timestamp>
+    </dbo_QuantitativeData_CT>
+    <dbo_PriceTrend_CT>
+        <primaryKey>ShareClassId</primaryKey>
+        <primaryKey>TrailingType</primaryKey>
+        <primaryKey>Period</primaryKey>
+        <filed>AsOfDate</filed>
+        <filed>MovingAverage</filed>
+        <filed>CloseAsMovingAverage</filed>
+        <filed>CreateDate</filed>
+        <filed>UpdateDate</filed>
+    </dbo_PriceTrend_CT>
+    </CentralEndData>
+</CDCtables>
