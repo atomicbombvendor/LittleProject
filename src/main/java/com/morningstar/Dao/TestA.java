@@ -6,15 +6,13 @@ import javax.inject.Named;
 /**
  * Created by eli9 on 3/31/2017.
  */
-@Named("testA")
+@Named("TestA")
 public class TestA {
-
+    @Inject
     private TestB b;
 
-    @Inject
-    public TestA(TestB b){
-        this.b = b;
+    public void testSpring(){
+        System.out.println("b: " + b.equals(""));
     }
 
-    public void testSpring(){}
 }

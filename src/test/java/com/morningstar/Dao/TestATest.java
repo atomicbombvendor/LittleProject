@@ -14,7 +14,7 @@ public class TestATest {
     public void testSpring() throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:application.xml");
         System.out.println(ac == null);
-        TestA A = (TestA)ac.getBean("testA");
+        TestA A = (TestA)ac.getBean("TestA");
     }
 
 }
