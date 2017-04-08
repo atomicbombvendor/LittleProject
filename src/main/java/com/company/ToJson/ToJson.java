@@ -36,8 +36,8 @@ public class ToJson {
         }
         String json = JSONArray.fromObject(listP).toString();
         System.out.println(json);
-        String jsonString = JSON.toJSONString(list);
-        JSONArray jsonArray = JSONArray.parseArray(jsonString);
+//        String jsonString = JSON.toJSONString(list);
+//        JSONArray jsonArray = JSONArray.parseArray(jsonString);
     }
 
     public static void main(String[] args) {
