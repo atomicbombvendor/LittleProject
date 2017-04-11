@@ -65,37 +65,37 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>artifact</id>
-            <url>https://mvnrepository.com/artifact/</url>
-        </repository>
-        <repository>
-            <id>mvnrepository</id>
-            <url>http://mvnrepository.com/artifact/</url>
-        </repository>
-        <repository>
-            <id>msnexus</id>
-            <url>http://msnexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>Central</id>
-            <url>http://msnexus/content/repositories/central</url>
-        </repository>
-        <repository>
-            <id>3rd party</id>
-            <url>http://msnexus/content/repositories/thirdparty</url>
-        </repository>
-        <repository>
-            <id>Data Platform</id>
-            <url>http://msnexus/content/repositories/DP</url>
-        </repository>
-        <repository>
-            <id>public</id>
-            <url>https://msnexus.morningstar.com/content/groups/public/</url>
-        </repository>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>artifact</id>-->
+            <!--<url>https://mvnrepository.com/artifact/</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>mvnrepository</id>-->
+            <!--<url>http://mvnrepository.com/artifact/</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>msnexus</id>-->
+            <!--<url>http://msnexus/content/groups/public/</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>Central</id>-->
+            <!--<url>http://msnexus/content/repositories/central</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>3rd party</id>-->
+            <!--<url>http://msnexus/content/repositories/thirdparty</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>Data Platform</id>-->
+            <!--<url>http://msnexus/content/repositories/DP</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>public</id>-->
+            <!--<url>https://msnexus.morningstar.com/content/groups/public/</url>-->
+        <!--</repository>-->
 
-    </repositories>
+    <!--</repositories>-->
     <dependencies>
         <dependency>
             <groupId>dom4j</groupId>
@@ -130,11 +130,11 @@
             <version>0.9.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc42</artifactId>
-            <version>6.0.7130.100</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.microsoft.sqlserver</groupId>-->
+            <!--<artifactId>sqljdbc42</artifactId>-->
+            <!--<version>6.0.7130.100</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>junit</groupId>
