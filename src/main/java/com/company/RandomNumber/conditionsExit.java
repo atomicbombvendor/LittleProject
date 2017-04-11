@@ -42,12 +42,14 @@ public class conditionsExit {
             try {
                 result = RandomNum.getRandom1To10ThrowException();
             } catch (Exception e) {
-
+                //此处并不捕获异常情况。
+            }finally {
+                System.out.println("this is finally!");
             }
+            System.out.println("runTimes is "+runTimes);
             if (result == 200) {
                 break;
             }
-            System.out.println("runTimes is "+runTimes);
             runTimes++;
         }
 
