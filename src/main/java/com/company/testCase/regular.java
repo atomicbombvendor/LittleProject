@@ -36,5 +36,14 @@ public class regular {
         //getResult();
         String[] r = getArraysByEnterOrSpace();
         Arrays.asList(r).stream().forEach(s -> System.out.println(s));
+        testStringFormat();
+    }
+
+    public static void testStringFormat(){
+        String format = "test%stest%s";
+        String s1 ="123";
+        String[] s2 = new String[]{"ppp","ddd"};
+        String result = String.format(format,s1,Arrays.toString(s2));
+        System.out.println(result); // StringFormat怎么拼接数组
     }
 }

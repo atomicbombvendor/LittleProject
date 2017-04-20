@@ -10,7 +10,7 @@ package com.company.RandomNumber;
 public class conditionsExit {
 
     public static void main(String[] args) {
-        conditionsExit.exitWhenFillConditionFor();
+        conditionsExit.reRunWhenException();
     }
 
     /**
@@ -57,6 +57,32 @@ public class conditionsExit {
             System.out.println("200 OK!");
         }else{
             System.out.println("runTimes: " +runTimes+" should be more than 10 times!");
+        }
+    }
+
+    /**
+     * 用来测试是否没有返回的情况下，发生异常则重复运行程序
+     * 在没有返回值的情况下，可以使用break退出循环
+     */
+    public static void reRunWhenException(){
+        int retry = 3;
+        int attempts = 0;
+        while(++attempts <= retry){
+            try{
+                RandomNum.getRandom1To10ThrowExceptionNoReturn();
+                break;
+            }catch (Exception e) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e1) {
+
+                }
+                if(attempts == retry){
+                    System.out.println(String.format("Tried %d times to execute SaveOrUpdate record", attempts));
+
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 }
