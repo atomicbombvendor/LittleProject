@@ -17,14 +17,14 @@ public class testIterator {
      * 结果：会影响List的内容
      */
     public static void testIte(){
-        List<Person> list = new ArrayList<>();
-        Person p1 = new Person();p1.setName("test1");list.add(p1);
-        Person p2 = new Person();p2.setName("test2");list.add(p2);
-        Person p3 = new Person();p3.setName("test3");list.add(p3);
-        Person p4 = new Person();p4.setName("test4");list.add(p4);
-        Person p5 = new Person();p5.setName("test5");list.add(p5);
+        List<Person<String>> list = new ArrayList<>();
+        Person<String> p1 = new Person<String>();p1.setName("test1");list.add(p1);
+        Person<String> p2 = new Person<String>();p2.setName("test2");list.add(p2);
+        Person<String> p3 = new Person<String>();p3.setName("test3");list.add(p3);
+        Person<String> p4 = new Person<String>();p4.setName("test4");list.add(p4);
+        Person<String> p5 = new Person<String>();p5.setName("test5");list.add(p5);
         System.out.println(list.get(3).getAge());
-        for (Person p:list) {
+        for (Person<String> p:list) {
             p.setAge(110);
         }
 
