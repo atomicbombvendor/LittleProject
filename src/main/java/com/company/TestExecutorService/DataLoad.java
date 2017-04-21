@@ -14,17 +14,17 @@ import java.util.concurrent.ScheduledExecutorService;
  * 测试线程池的程序。这里有四种线程池
  */
 public class DataLoad {
-    private final ExecutorService pool = Executors.newFixedThreadPool(10);
+    private final static ExecutorService pool = Executors.newFixedThreadPool(10);
     private final Queue<Person<String>> dataContentQueue;// new ArrayList<>();
 
     public DataLoad(Queue<Person<String>> person) {
         this.dataContentQueue = person;
     }
 
-    private static void run(ExecutorService threadPool) {
+    private static void run() {
         for (int i = 1; i < 5; i++) {
             final int taskId = 1;
-            threadPool.execute(new Runnable() {
+            pool.execute(new Runnable() {
                 @Override
                 public void run() {
                     for (int i = 1; i < 5; i++) {
@@ -38,7 +38,7 @@ public class DataLoad {
                 }
             });
         }
-        threadPool.shutdown();
+        pool.shutdown();
     }
 
     public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class DataLoad {
         // 效果类似于Timer定时器
         ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(3);
 
-        run(fixedThreadPool);
+        run();
         //run(cachedThreadPool);
         //run(singleThreadPool);
         //run(scheduledThreadPool);
