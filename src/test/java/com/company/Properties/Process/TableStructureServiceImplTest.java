@@ -6,9 +6,6 @@ import org.junit.Test;
  * Created by eli9 on 3/27/2017.
  */
 public class TableStructureServiceImplTest {
-    @org.junit.jupiter.api.Test
-    void getSql1() {
-    }
 
     @Test
     public void getTableStructureEntity() throws Exception {

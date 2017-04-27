@@ -55,5 +55,36 @@ public class LocalDateTimeUtils {
 //        List<Integer> list2 = LocalDateTimeUtils.getDateList(ed1,st);
 //        System.out.println(list2.size());
 //        list2.stream().forEach(i -> System.out.println(i));
+
+        split10years();
+    }
+
+    /**
+     * 划分一个年的时间段，每10年为间隔，划分
+     *
+     */
+    public static void split10years(){
+        LocalDate st = LocalDate.of(2008,02,04);
+        LocalDate ed = LocalDate.of(2017,10,2);
+        List<String> list = new ArrayList<>();
+        int stYear = st.getYear();
+        int edYear = ed.getYear();
+        int period = 10;
+        int diff = edYear - stYear + 1;
+        int interval = diff % period == 0 ? diff / period : (diff / period) + 1;
+        for (int i = 0; i < interval; i++) {
+            LocalDate stTmp = st.plusYears(i * period);
+            LocalDate edTmp = st.plusYears(i * period + 9);
+            if (edTmp.getYear() >= ed.getYear()) {
+                edTmp = ed;
+            }
+            list.add(String.format("%s %s", stTmp.toString(), edTmp.toString()));
+        }
+        list.forEach(s -> System.out.println(s));
+
+        LocalDate d1 = LocalDate.of(2012,12,29);
+        LocalDate d2 = d1.plusDays(12);
+        d2 = d1;
+        System.out.println(d2.toString());
     }
 }
