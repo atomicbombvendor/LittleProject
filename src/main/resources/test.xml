@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<ArrayOfDataMessage>
+	<book>
+		<title lang="eng">Harry Potter</title>
+		<price>29.99</price>
+	</book>
+
+	<book>
+		<title lang="eng">Learning XML</title>
+		<price>39.95</price>
+	</book>
+
+	<DataMessage>
+		<DataGroup>HistoricalOperation</DataGroup>
+		<Subject>ReferenceId=201704272025</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:25:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>DailyTrailingPerformance</DataGroup>
+		<Subject>ReferenceId=201704272025</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:25:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>MarketPerformance</DataGroup>
+		<Subject>ReferenceId=201704272027</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:27:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>PriceHistory</DataGroup>
+		<Subject>ReferenceId=201704272027</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:27:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>Price</DataGroup>
+		<Subject>ReferenceId=201704272027</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:27:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>PriceTaxComponent</DataGroup>
+		<Subject>ReferenceId=201704272028</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:28:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>Yield</DataGroup>
+		<Subject>ReferenceId=201704272028</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:28:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+	<DataMessage>
+		<DataGroup>TransactionalPrice</DataGroup>
+		<Subject>ReferenceId=201704272028</Subject>
+		<Type>UPDATE</Type>
+		<Signature>ffffffffffffffffffffffffffffffff</Signature>
+		<Sequence>-1</Sequence>
+		<Expires>2017-05-05 01:28:00z</Expires>
+		<Priority>3</Priority>
+	</DataMessage>
+</ArrayOfDataMessage>
