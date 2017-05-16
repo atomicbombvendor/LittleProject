@@ -10,5 +10,8 @@ public class Main {
         //http://price.xoi.morningstar.com/DataPlatform/DataOutput
         // .aspx?Package=HistoricalData&ContentType=MarketPrice&IdType=PerformanceId
         // &Id=0P0000O31M&Dates=2013,2017
+
+        double f = 62.0099983215332;
+        System.out.println(String.format("%16.16f",f));
     }
 }
