@@ -18,6 +18,17 @@ public class regular {
         }
     }
 
+    public static void getResult1(){
+        String filePath = "test\\test\\test\\0C00001RHP.xml";
+        Pattern pattern = Pattern.compile("0C.{8}");
+        Matcher matcher = pattern.matcher(filePath);
+        while(matcher.find()){
+            System.out.println(matcher.group());
+        }
+        System.out.println(filePath.substring(filePath.length()-14,filePath.length()-4));
+    }
+
+
     public static String[] getArraysByEnterOrSpace(){
         String str = "EX$$$$XNAS\n" +
                 "EX$$$$XNYS\n" +
@@ -37,6 +48,7 @@ public class regular {
         String[] r = getArraysByEnterOrSpace();
         Arrays.asList(r).stream().forEach(s -> System.out.println(s));
         testStringFormat();
+        getResult1();
     }
 
     public static void testStringFormat(){
