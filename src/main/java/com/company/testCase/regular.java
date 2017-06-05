@@ -45,9 +45,9 @@ public class regular {
 
     public static void main(String[] args) {
         //getResult();
-        String[] r = getArraysByEnterOrSpace();
-        Arrays.asList(r).stream().forEach(s -> System.out.println(s));
-        testStringFormat();
+//        String[] r = getArraysByEnterOrSpace();
+//        Arrays.asList(r).stream().forEach(s -> System.out.println(s));
+//        testStringFormat();
         getResult1();
     }
 
