@@ -21,4 +21,9 @@ public class ReadXMLTest {
         ReadXML.xPathRead();
     }
 
+    @Test
+    public void getExchangeList(){
+        ReadXML.getExchangeList();
+    }
+
 }

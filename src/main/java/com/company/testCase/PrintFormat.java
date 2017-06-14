@@ -19,4 +19,13 @@ public class PrintFormat {
 
         System.out.println(StringUtils.join(arr,"|"));
     }
+
+    public static void format(){
+        double d = 0.30694;
+        System.out.println(String.format("%6f",d));
+    }
+
+    public static void main(String[] args) {
+        format();
+    }
 }

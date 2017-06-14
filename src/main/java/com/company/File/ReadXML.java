@@ -1,5 +1,7 @@
 package com.company.File;
 
+import com.company.Entity.ExchangeEntity;
+import org.dom4j.Attribute;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -20,6 +22,7 @@ import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,7 +33,7 @@ import java.util.List;
 public class ReadXML {
     private static final String filePath = "test.xml";
     private static final String idsPath = "IdList.xml";
-
+    private static final String exchangeList = "ConfigFiles-XML4HardCode-ExchangeList.xml";
     public static void xPathRead() {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -130,5 +133,59 @@ public class ReadXML {
         }
     }
 
+    public static List<ExchangeEntity> getExchangeList(){
+        String xpathExpr = "/ExchangeList/Exchange";
+        SAXReader reader = new SAXReader();
+        InputStream in = ReadXML.class.getClassLoader().getResourceAsStream(exchangeList);
+        List<ExchangeEntity> result = new ArrayList<>();
+        try{
+            org.dom4j.Document doc = reader.read(in);
+            XPath xPath = new Dom4jXPath(xpathExpr);
+            List results = xPath.selectNodes(doc);
+            System.out.println("List Size: " + results.size());
+            for (Object o : results) {
+                if (o instanceof Element) {
+                    Element element = (Element) o;
+                    List attrList = element.attributes();
+                    ExchangeEntity entity = new ExchangeEntity();
+                    for(int i=0; i<attrList.size(); i++){
+                        Attribute attr = (Attribute)attrList.get(i);
+                        System.out.println(attr.getName() + "=" + attr.getValue());
+                        if("ExchangeId".equals(attr.getName())){
+                            entity.setExchangeId(attr.getValue());
+                        }
+                        if("ExchangeGlobalId".equals(attr.getName())){
+                            entity.setExchangeGlobalId(attr.getValue());
+                        }
+                        if("MIC".equals(attr.getName())){
+                            entity.setMIC(attr.getValue());
+                        }
+                        if("ExchangeName".equals(attr.getName())){
+                            entity.setExchangeName(attr.getValue());
+                        }
+                        if("CountryId".equals(attr.getName())){
+                            entity.setCountryId(attr.getValue());
+                        }
+                        if("CountryName".equals(attr.getName())){
+                            entity.setCountryName(attr.getValue());
+                        }
+                        if("RegionId".equals(attr.getName())){
+                            entity.setRegionId(attr.getValue());
+                        }
+                        if("RegionName".equals(attr.getName())){
+                            entity.setRegionName(attr.getValue());
+                        }
+                    }
+                    result.add(entity);
+                    System.out.println("\n");
+                }
+            }
+        } catch (JaxenException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
 
