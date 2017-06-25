@@ -20,6 +20,15 @@ public class TempTest {
         return (~10);
     }
 
+    /**
+     * short and byte
+     */
+    public static void test3(){
+        short a =128;
+        byte b =(byte) a;
+        System.out.println(a + ""+b);
+    }
+
     public static void doSomething(Integer integer){
         integer=new Integer(2);
     }
@@ -29,5 +38,6 @@ public class TempTest {
         doSomething(var2);
         System.out.print(var1.intValue());
         System.out.print(var1==var2);
+        test3();
     }
 }
