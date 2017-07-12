@@ -32,7 +32,7 @@ public class FunctionExam {
     }
                                                 //multiple argument(0~n)
     public static int decoratorExam(int value, Function<Integer, Integer> ... decorators) {
-//        return Arrays.asList(decorators).stream().reduce((current, next) -> current.andThen(next)).orElse
+//        return ArrayTst.asList(decorators).stream().reduce((current, next) -> current.andThen(next)).orElse
 //                (Function::identity).apply(value);
         return Arrays.asList(decorators).stream().reduce((current, next) -> current.andThen(next))
                 .orElseGet(Function::identity).apply(value);
