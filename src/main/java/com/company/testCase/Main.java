@@ -13,5 +13,13 @@ public class Main {
 
         double f = 62.0099983215332;
         System.out.println(String.format("%16.16f",f));
+
+        String value= String.format("%s",9011293044.84568+"d");
+        System.out.println("Value: "+value);
+        String value1="<h2 id=\"section-2\">第二部分</h2><p>Nullam hendrerit justo non leo aliquet imperdiet. " +
+                "Etiam in sagittis lectus.</p> <p>Vestibulum consectetur scelerisque lacus, ac fermentum </p> ";
+        String value2=value1.substring(0, value1.indexOf("</p>")+4).concat("...");
+        System.out.println(value2);
+
     }
 }

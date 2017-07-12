@@ -3,10 +3,7 @@ package com.company.File;
 import com.company.Entity.ExchangeEntity;
 import com.sun.org.apache.regexp.internal.RE;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,7 +101,43 @@ public class FileUtils {
         }
     }
 
+    public static List<String> getContent(String fileServerPath, String filePattern){
+        List<String> result = new ArrayList<>();
+        String filePath = getAllFilePath(fileServerPath, filePattern).get(0);
+        FileInputStream fis=null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;//用于包装InputStreamReader,提高处理性能。因为BufferedReader有缓冲的，而InputStreamReader没有。
+
+        try {
+            String value = null;
+            fis = new FileInputStream(filePath);
+            isr = new InputStreamReader(fis);
+            br = new BufferedReader(isr);
+
+            while((value=br.readLine())!=null){
+                result.add(value);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                br.close();
+                isr.close();
+                fis.close();
+                // 关闭的时候最好按照先后顺序关闭最后开的先关闭所以先关s,再关n,最后关m
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
     public static void main(String[] args) {
-        writeFile(ReadXML.getExchangeList());
+        //writeFile(ReadXML.getExchangeList());
+        String filePath="D:\\Projects\\LittleProject\\src\\main\\resources";
+        String fileName = "PerformanceIds.txt";
+        List<String> result = getContent(filePath, fileName);
+        System.out.println(result.size());
     }
 }
