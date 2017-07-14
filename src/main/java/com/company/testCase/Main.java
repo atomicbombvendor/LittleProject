@@ -1,5 +1,7 @@
 package com.company.testCase;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,6 +22,8 @@ public class Main {
                 "Etiam in sagittis lectus.</p> <p>Vestibulum consectetur scelerisque lacus, ac fermentum </p> ";
         String value2=value1.substring(0, value1.indexOf("</p>")+4).concat("...");
         System.out.println(value2);
+
+        System.out.println((char) (new Random().nextInt(26) + 65));
 
     }
 }
