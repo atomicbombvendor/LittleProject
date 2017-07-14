@@ -26,7 +26,7 @@ public class Main {
 
         log("生成的字符总数: " + listCount
                 + "  生成的字符长度: " + charCount
-                + "  要查询的字符长度: " + searchText
+                + "  要查询的字符: " + searchText
         );
 
         if (testList == null) {
@@ -119,6 +119,7 @@ public class Main {
     }
 
     /**
+     * 包含的相同的字符，这很正常
      * @param listCount 所有的姓名缩写总数
      * @param charCount 字符长度
      * @return 所有的姓名缩写

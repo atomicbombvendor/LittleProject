@@ -51,7 +51,7 @@ public class LetterTree {
     public void buildTree(List<String> list) {
         checkNull(list);
         root = new Node('A', null);//初始化根节点
-        nodes = new ArrayList<>();
+        nodes = new ArrayList<>(); //总节点数
         Node currentNode = root;
 
         for (int index = 0; index < list.size(); index++) {
@@ -63,7 +63,7 @@ public class LetterTree {
                 char ch = str.charAt(i);
                 //从当前的节点得到属于字符ch的节点
                 Node node = currentNode.getNodeByLetter(ch);
-                //如果没有找到，重新添加
+                //如果没有找到，重新添加 包括 startPosition
                 if (node == null) {
                     node = new Node(ch, currentNode);
                     node.setStartPosition(index);
@@ -75,7 +75,7 @@ public class LetterTree {
             }
             currentNode = root;
         }
-        root.getList();
+        root.getList(); //root节点下面的子节点的list
         buildIndex();
     }
 
