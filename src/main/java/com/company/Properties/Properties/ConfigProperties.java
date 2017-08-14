@@ -9,7 +9,7 @@ import java.util.Properties;
 public class ConfigProperties {
 
     private static Properties properties = null;
-    //配置文件加载
+    //多个配置文件加载
     static {
         InputStream is = null;
         try {
@@ -38,5 +38,28 @@ public class ConfigProperties {
                 }
             }
         }
+    }
+
+    public static String getProperty(String name) {
+        return properties.getProperty(name);
+    }
+
+    public static String setProperty(String name, String value) {
+        OutputStream out = null;
+        try {
+            out = new FileOutputStream(ConfigProperties.class.getClassLoader().getResource("TableProperties.properties").getPath().toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Object property = properties.setProperty(name, value);
+        try {
+            properties.store(out,null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (property == null) {
+            return "";
+        }
+        return property.toString();
     }
 }
