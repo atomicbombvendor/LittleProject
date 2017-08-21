@@ -1,5 +1,8 @@
 package com.company.testCase;
 
+import com.company.Entity.Person;
+import jdk.nashorn.internal.runtime.regexp.joni.encoding.IntHolder;
+
 import java.util.Random;
 
 public class Main {
@@ -25,6 +28,16 @@ public class Main {
 //
 //        System.out.println((char) (new Random().nextInt(26) + 65));
 
-        System.out.println(Integer.toBinaryString(10000000));
+//        System.out.println(Integer.toBinaryString(10000000));
+//        IntHolder i = new IntHolder();
+//        i.value=1;
+//        changeInteger(i);
+//        System.out.println(i.value);
+//
+//        String s = new String("s");
+//        changeString(s);
+//        System.out.println(s);
+
     }
+
 }

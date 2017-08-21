@@ -5,8 +5,11 @@ package com.company.Lambda;
  */
 public class App {
     public static void main(String[] args) {
-//        LambdaTest<String, String> L = (f) -> {
-//            System.out.println(f); return "";};
-//        L.convert("Hello World!");
+        System.out.println(" : " + testComplier("Hello"));
+    }
+
+    public static String testComplier(String value){
+        System.out.print(value);
+        return "World";
     }
 }
