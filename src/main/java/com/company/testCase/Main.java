@@ -37,7 +37,7 @@ public class Main {
 //        String s = new String("s");
 //        changeString(s);
 //        System.out.println(s);
-
+        System.out.println(1+2+"33");
     }
 
 }
