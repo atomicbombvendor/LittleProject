@@ -29,6 +29,8 @@
     <bean id="calculationImpl" class="com.company.Spring.TestAOP.CalculationImpl"/>
 
     <bean id="father" class="com.company.Entity.Person"/>
+
+    <bean id="testDao" class="com.company.Spring.TestIOC.BaseServiceImpl"/>
     <!-- 将切面类交给Spring容器管理-->
     <bean class="com.company.Spring.TestAOP.CalculationAnnotation"/>
 
