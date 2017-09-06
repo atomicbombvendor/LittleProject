@@ -1,6 +1,8 @@
 package com.company.Array;
 
 
+import java.util.Arrays;
+
 /**
  * Created by ZZ on 2017/6/18.
  */
@@ -16,7 +18,24 @@ public class ArrayTst {
         System.out.println(a.length);
     }
 
+    /**
+     * 只初始化而没有赋值的数组，所有空间的值都是0
+     */
+    public static void test2(){
+        int[] x = new int[25];
+        Arrays.stream(x).forEach(System.out::println);
+    }
+
+    /**
+     * 只初始化而没有被赋值的String类型的数组，所有的值都是Null
+     */
+    public static void test3(){
+        String[] x = new String[25];
+        Arrays.stream(x).forEach(System.out::println);
+    }
     public static void main(String[] args) {
-        testArry();
+        //testArry();
+        //test2();
+        test3();
     }
 }

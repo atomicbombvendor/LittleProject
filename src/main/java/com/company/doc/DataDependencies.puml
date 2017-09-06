@@ -1,0 +1,166 @@
+@startuml
+skinparam monochrome reverse
+skinparam defaultFontName Consolas
+skinparam shadowing false
+
+[*] --> RawPrice : PriceXOI\n message
+
+[*] --> RawReport : MEDS CDC
+RawReport : - GlobalProductReport
+RawReport : - GlobalProductDatapoint
+
+[*] --> RawTSO : NFS CDC
+RawTSO : - TSOCompanyLevelAdjust
+RawTSO : - TSOCompanyLevelAdjustAtlas
+RawTSO : - TSOCompanyLevelByType
+RawTSO : - TSOShareLevelAdjust
+RawTSO : - TSOShareLevelRaw
+
+[*] --> CompanyOperation : GID\n message
+
+[*] --> ShareClassOperation : GID\n message
+
+[*] --> ParRatio : NFS CDC
+
+[*] --> ConvRatio : NFS CDC
+
+[*] --> SplitDividends : GPCA CDC
+
+RawReport --> CalculatedReport : RawReportChanged
+
+state CalculatedReport {
+    [*] --> FinancialReport
+    FinancialReport : - FinancialReportReference
+    FinancialReport : - BalanceSheet
+    FinancialReport : - IncomeStatement
+    FinancialReport : - CashFlow
+    FinancialReport : - EarningReport
+
+    FinancialReport --> TSOBSMapping
+}
+
+CompanyOperation --> CalculatedReport : CompanyOperationChanged
+
+ShareClassOperation --> CalculatedReport : ShareClassOperationChanged
+
+RawTSO --> CalculatedReport : TSOChanged
+
+ParRatio --> CalculatedReport : ParRatioChanged
+
+ConvRatio --> CalculatedReport : ConvRatioChanged
+
+SplitDividends --> CalculatedReport : SplitChanged
+
+CalculatedReport --> DerivedReportData : ReportChangedWithPeriodEndDate
+
+state DerivedReportData {
+    [*] --> FinancialReportGrowthData
+    FinancialReportGrowthData : - BalanceSheetGrowth
+    FinancialReportGrowthData : - IncomeStatementGrowth
+    FinancialReportGrowthData : - CashFlowGrowth
+    FinancialReportGrowthData : - EarningReportGrowth
+
+    --
+
+    [*] --> CalcFinancialData
+    CalcFinancialData : - CalcFinancialDataBalanceSheet
+    CalcFinancialData : - CalcFinancialDataCashFlow
+    CalcFinancialData : - CalcFinancialDataIncomeStatement
+    CalcFinancialData : - CalcFinancialDataEarningReport
+
+    CalcFinancialData --> CalcFinancialDataGrowth : ReportChangedWithPeriodEndDate
+    CalcFinancialDataGrowth : - CalcFinancialDataBalanceSheetGrowth
+    CalcFinancialDataGrowth : - CalcFinancialDataCashFlowGrowth
+    CalcFinancialDataGrowth : - CalcFinancialDataIncomeStatementGrowth
+    CalcFinancialDataGrowth : - CalcFinancialDataEarningReportGrowth
+
+    state Efficiency {
+        [*] --> EfficiencyRatio
+        EfficiencyRatio --> EfficiencyRatioGrowth : EfficiencyRatioChanged
+    }
+
+    CalcFinancialData --> Efficiency : ReportChangedWithPeriodEndDate
+
+    state FinancialHealth {
+        [*] --> FinancialHealthRatio
+        FinancialHealthRatio --> FinancialHealthRatioGrowth : FinancialHealthRatioChanged
+    }
+
+    CalcFinancialData --> FinancialHealth : ReportChangedWithPeriodEndDate
+
+    state ProfitabilityData {
+        [*] --> Profitability
+        Profitability --> ProfitabilityGrowth : ProfitabilityChanged
+    }
+
+    CalcFinancialData --> ProfitabilityData : ReportChangedWithPeriodEndDate
+
+    state MomentumData {
+        [*] --> Momentum
+        Momentum --> MomentumGrowth : MomentumChanged
+    }
+    CalcFinancialData --> MomentumData : ReportChangedWithPeriodEndDate
+
+    --
+
+    state EstimateData {
+        [*] --> Estimate
+        Estimate --> EstimateGrowth : EstimateChanged
+    }
+    [*] --> EstimateData
+}
+
+ValuationRatio --> DerivedReportData : ValuationRatioChanged (FinancialHealthRatio) ???
+
+MarketCapital --> DerivedReportData : MarketCapitalChanged (FinancialHealthRatio) ???
+
+[*] --> EmployeeNumber : CDC
+
+EmployeeNumber --> DerivedReportData : EmployeeNumberChanged (Profitability)
+
+[*] --> RawEstimate : CDC
+
+RawEstimate --> DerivedReportData : EstimatedChanged (Estimate)
+
+AdjustPrice --> PriceMultipleValuation : AdjustPriceChanged
+
+DerivedReportData --> PriceMultipleValuation : ReportChangedWithFileDate\n (combine all changes, no growth)
+
+state PriceMultipleValuation {
+    [*] --> PriceMultiple
+    PriceMultiple : - PriceMultiple
+    PriceMultiple : - ValuationRatio
+
+    PriceMultiple --> PriceMultipleGrowth : PriceMultipleChanged
+    PriceMultipleGrowth : - PriceMultipleGrowth
+    PriceMultipleGrowth : - ValuationRatioGrowth
+}
+
+RawPrice --> AdjustPrice : RawPriceChanged
+
+SplitDividends --> AdjustPrice : SplitAndSpinOffChanged
+
+AdjustPrice --> MarketReturn : AdjustPriceChangedForMarketReturn\n(include SpinOffChange)
+
+SplitDividends --> MarketReturn : CashDividendChanged
+
+state MarketReturn {
+    [*] --> MarketTotalReturn
+    MarketTotalReturn --> MarketReturnGrowth : MarketTotalReturnChanged
+    MarketTotalReturn --> ReturnsBasedRiskStatistics : MarketTotalReturnChanged
+}
+
+AdjustPrice --> PreferYield : PreferStockPriceChanged
+
+[*] --> PreferredStockSpecific : CDC
+
+PreferredStockSpecific --> PreferYield : PreferredStockSpecificChanged
+
+PreferYield --> PreferYieldGrowth : PreferYieldChanged
+
+
+PreferYieldGrowth --> [*]
+MarketReturn --> [*]
+PriceMultipleValuation --> [*]
+
+@enduml
