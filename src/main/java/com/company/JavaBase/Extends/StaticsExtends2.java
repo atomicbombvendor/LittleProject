@@ -1,9 +1,13 @@
 package com.company.JavaBase.Extends;
 
+import com.company.DesignMode.FactoryDesign.FatherFactory;
+import com.company.DesignMode.ProxyDesign.Image;
+import com.company.InjectTest.Person;
+
 /**
  * Created by eli9 on 9/6/2017.
  */
-public class StaticsExtends2 {
+public class StaticsExtends2 extends Person implements FatherFactory {
 
     public static void main(String[] args) {
         C c = new C();
@@ -51,6 +55,12 @@ public class StaticsExtends2 {
         //在子类中，无法简单的通过属性名称来获取父类中的属性。
         //而是必须通过父类名称加上属性名称（super.变量名）的方法才可以访问父类中的属性
         //一般而言，为了代码容易阅读，及其不建议在父类和子类中使用同名属性
+        long i = 0xfff;
+    }
+
+    @Override
+    public void build() {
+
     }
 }
 
