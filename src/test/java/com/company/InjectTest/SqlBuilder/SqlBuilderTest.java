@@ -21,6 +21,15 @@ public class SqlBuilderTest {
         System.out.println(result);
     }
 
+    @Test
+    public void buildDelete() throws Exception {
+        List<CalcFinancialDataBalanceSheet> list = getBSList();
+
+        SqlBuilder builder = new SqlBuilder();
+        SqlOutput result = builder.buildDelete(list);
+        System.out.println(result);
+    }
+
     private List<CalcFinancialDataBalanceSheet> getBSList(){
         List<CalcFinancialDataBalanceSheet> list = new ArrayList<>();
 

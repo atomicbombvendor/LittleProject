@@ -1,5 +1,9 @@
 package com.company.InjectTest.SqlBuilder;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,5 +11,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DataUploadHandler {
+
+    private SqlBuilder sqlBuilder;
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public DataUploadHandler(SqlBuilder sqlBuilder) {
+        this.sqlBuilder = sqlBuilder;
+    }
 
 }

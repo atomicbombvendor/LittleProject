@@ -1,9 +1,11 @@
 package com.company.InjectTest.SqlBuilder;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -77,6 +79,11 @@ public class SqlTemplate {
         return String.format(UPDATE_SQL, tableName, columns.toString(), conditions.toString(), updates.toString(), columns.toString(), inserts.toString());
     }
 
+    /**
+     * Join Delete SQL
+     * @param dataBaseMapper table structure
+     * @return
+     */
     private String deleteSql(DataBaseMapper dataBaseMapper){
         String tableName = dataBaseMapper.getTableName();
         String where = dataBaseMapper.getPrimaryKey().stream()
@@ -85,20 +92,8 @@ public class SqlTemplate {
         return String.format(DELETE_SQL, tableName, where);
     }
 
-    private SqlOutput build(List<CalcFinancialDataBalanceSheet> list, Function<SqlTemplate, String> sqlFun, BiFunction<DataBaseMapper, DataEntity, List<Object>> valueFun) {
-        SqlOutput sqlOutput = new SqlOutput();
-        List<Object[]> values = new ArrayList<>(list.size());
-        if (!list.isEmpty()) {
-            Class clazz = list.get(0).getClass();
-            SqlTemplate sqlTemplate = SqlTemplateCache.getSqlTemplate(clazz);
-            sqlOutput.setSql(sqlFun.apply(sqlTemplate));
-            DataBaseMapper dataBaseMapper = sqlTemplate.getDataBaseMapper();
-            list.stream().forEach(l -> {
-                List<Object> keyValue = valueFun.apply(dataBaseMapper, l);
-                values.add(keyValue.toArray());
-            });
-            sqlOutput.setValues(values);
-        }
-        return sqlOutput;
-    }
+
+
+
+
 }

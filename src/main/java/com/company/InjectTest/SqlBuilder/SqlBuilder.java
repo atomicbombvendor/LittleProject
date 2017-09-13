@@ -1,19 +1,17 @@
 package com.company.InjectTest.SqlBuilder;
 
+import org.apache.poi.poifs.crypt.DataSpaceMapUtils;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-import static org.springframework.util.ReflectionUtils.invokeMethod;
 
 /**
  * Created by eli9 on 9/8/2017.
@@ -58,6 +56,10 @@ public class SqlBuilder {
             DataBaseMapper dataBaseMapper = sqlTemplate.getDataBaseMapper();
             String sql = sqlTemplate.getUpdate();
 
+            /**
+             * 得到了list中每个entity对应字段的value
+             * 格式：(field1, field2),(field1, field2)
+             */
             String value = list.stream()
                     .map(l -> dataBaseMapper.getMethodMap().values()
                             .stream().map(m -> {
@@ -74,11 +76,58 @@ public class SqlBuilder {
 
             Matcher m = valuePattern.matcher(sql);
             if(m.find()){
-                //将目标字符串里与既有模式相匹配的子串全部替换为指定的字符串
+                //将目标字符串里与既有模式相匹配的子串全部替换为指定的字符串,
+                //替换 {{VALUES}}
                 return m.replaceAll(value);
             }
         }
         return "";
+    }
+
+    /**
+     * 返回一个SqlOutput对象，包含DeleteSql和 主键的信息 list
+     * @param list
+     * @return
+     */
+    public SqlOutput buildDelete(List<CalcFinancialDataBalanceSheet> list){
+        //valueFunc是读取一个CFDBS的对象，返回主键的值的list
+        BiFunction<DataBaseMapper, CalcFinancialDataBalanceSheet, List<Object>> valueFunc =
+                (dataBaseMapper, t) ->
+                        dataBaseMapper.getPrimaryKey().stream()
+                .map(key -> invokeMethod(dataBaseMapper.getMethodMap().get(key), t))
+                .collect(Collectors.toList());
+
+                return build(list, SqlTemplate::getDelete, valueFunc);
+    }
+
+    /**
+     *根据参数构造SqlOutput对象
+     * @param list
+     * @param sqlFun
+     * @param valueFun 2个入参的表达式
+     * @return
+     */
+    private SqlOutput build(
+            List<CalcFinancialDataBalanceSheet> list,
+            Function<SqlTemplate, String> sqlFun,
+            //BiFunction两个参数
+            BiFunction<DataBaseMapper, CalcFinancialDataBalanceSheet, List<Object>> valueFun) {
+
+        SqlOutput sqlOutput = new SqlOutput();
+        List<Object[]> values = new ArrayList<>(list.size());
+        if (!list.isEmpty()) {
+            Class clazz = list.get(0).getClass();
+            //得到对应的表结构
+            SqlTemplate sqlTemplate = SqlTemplateCache.getSqlTemplate(clazz);
+            sqlOutput.setSql(sqlFun.apply(sqlTemplate));
+            DataBaseMapper dataBaseMapper = sqlTemplate.getDataBaseMapper();
+            list.stream().forEach(l -> {
+                List<Object> keyValue = valueFun.apply(dataBaseMapper, l);
+                values.add(keyValue.toArray());
+            });
+            sqlOutput.setValues(values);
+        }
+        return sqlOutput;
     }
 
     private Object invokeMethod(Method method, CalcFinancialDataBalanceSheet obj){

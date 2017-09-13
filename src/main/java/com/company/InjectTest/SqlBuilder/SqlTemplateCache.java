@@ -12,7 +12,7 @@ public class SqlTemplateCache {
     private static Map<Class, SqlTemplate> mapper = new HashMap<>();
 
     /**
-     * 通过参数的类名，得到这个类的对应的表明，主键的字段和表其他字段的以及字段对应的get方法
+     * 通过参数的类名，得到这个类的对应的表名，主键的字段和表其他字段的以及字段对应的get方法
      * @param clazz 类的class
      * @return SqlTemplate
      */
