@@ -1,5 +1,6 @@
 package com.company.Lambda;
 
+import com.company.Entity.Person;
 import junit.framework.Assert;
 
 import java.util.*;
@@ -10,8 +11,7 @@ import java.util.stream.Stream;
 
 import static com.company.Lambda.BasicCalc.divide;
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.*;
 
 /**
  * Created by eli9 on 3/15/2017.
@@ -74,7 +74,15 @@ public class LambdaTest {
         String result = Stream.of(testString, testString2, testString3)
                 .min(Comparator.comparing( s -> s.chars().filter(Character::isLowerCase).count())).get();
 
+        List<Person> ps = new ArrayList<>();
+        ps.stream().map(p -> p.getName())
+                .collect(Collectors.joining("","",""));
 
+        ps.stream().collect(groupingBy(p -> p.getName(), counting()));
+
+        //下游收集器
+        ps.stream().collect(groupingBy(Person::getName, mapping(Person::getName, toList())));
+        
     }
 }
 

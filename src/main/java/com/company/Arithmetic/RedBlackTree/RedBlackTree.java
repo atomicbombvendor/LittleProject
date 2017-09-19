@@ -101,7 +101,7 @@ public class RedBlackTree<T extends Comparable<T>> {
     *      lx  rx                              x  ry
     *
     */
-    private void rigthRatate(RedBlackTreeNode<T> y){
+    private void rightRotate(RedBlackTreeNode<T> y){
         // 设置x是当前节点的左孩子。
         RedBlackTreeNode<T> x = y.left;
 
@@ -227,12 +227,15 @@ public class RedBlackTree<T extends Comparable<T>> {
                 }
 
                 // Case 3条件：叔叔是黑色或不存在，且当前节点是左孩子。
+                //将父节点设为黑色，将祖父节点设为红色，以祖父节点为支点右旋
                 setBlack(parent);
                 setRed(gParent);
-                rigthRatate(gParent);
+                rightRotate(gParent);
             }else{
                 //若“父节点”是“祖父节点的右孩子”
                 //// Case 1条件：叔叔节点是红色，且存在
+                //将叔父节点设为黑色，父节点设为黑色，祖父节点设为红色，将祖父节点设为当前节点，
+                //将祖父节点设为红色
                 RedBlackTreeNode<T> uncle = gParent.left;
                 if((uncle != null) && isRed(uncle)){
                     setBlack(uncle);
@@ -242,22 +245,26 @@ public class RedBlackTree<T extends Comparable<T>> {
                     continue;
                 }
                 // Case 2条件：叔叔是黑色或不存在，且当前节点是左孩子
+                //将父节点右旋，将当前节点设为父节点，父节点设为当前节点
+                //需要接着做下一步
                 if(parent.left == node){
                     RedBlackTreeNode<T> tmp;
-                    rigthRatate(parent);
+                    rightRotate(parent);
                     tmp = parent;
                     parent = node;
                     node = tmp;
                 }
 
+                //这一步总是要做
                 // Case 3条件：叔叔是黑色或不存在，且当前节点是右孩子。
+                //将父节点设为黑色，将祖父节点设为红色，以祖父节点为支点左旋
                 setBlack(parent);
                 setRed(gParent);
                 leftRotate(gParent);
             }
         }
 
-        // 将根节点设为黑色
+        // 当前节点是根节点且根节点为红色，将根节点设为黑色
         setBlack(this.mRoot);
     }
 
@@ -345,11 +352,249 @@ public class RedBlackTree<T extends Comparable<T>> {
         return !node.color;//RED is false; BLACK is true
     }
 
+    private boolean isBlack(RedBlackTreeNode<T> node){
+        return node.color;//RED is false; BLACK is true
+    }
+
     private void setBlack(RedBlackTreeNode<T> node){
-        node.color = BLACK;
+        if(node != null) {
+            node.color = BLACK;
+        }
     }
 
     private void setRed(RedBlackTreeNode<T> node){
-        node.color = RED;
+        if(node != null) {
+            node.color = RED;
+        }
+    }
+
+    private boolean colorOf(RedBlackTreeNode<T> node){
+        if(node != null) {
+            return node.color;
+        }
+        return BLACK;
+    }
+    
+    private void setColor(RedBlackTreeNode<T> node, boolean color) {
+        if(node != null) {
+            node.color = color;
+        }
+    }
+
+    private void setParent(RedBlackTreeNode<T> node, RedBlackTreeNode<T> parent){
+        if(node != null) {
+            node.parent = parent;
+        }
+    }
+
+    private RedBlackTreeNode<T> search(T key){
+        return search(mRoot, key);
+    }
+
+    private RedBlackTreeNode<T> search(RedBlackTreeNode<T> x, T key) {
+        if (x == null) {
+            return x;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0)
+            return search(x.left, key);
+        else if (cmp > 0)
+            return search(x.right, key);
+        else
+            return x;
+    }
+
+    /*
+ * 删除结点(node)，并返回被删除的结点
+ *
+ * 参数说明：
+ *     node 删除的结点
+ */
+    private void remove(RedBlackTreeNode<T> node) {
+        RedBlackTreeNode<T> child, parent;
+        boolean color;
+
+        // 被删除节点的"左右孩子都不为空"的情况。
+        if ( (node.left!=null) && (node.right!=null) ) {
+            // 被删节点的后继节点。(称为"取代节点")
+            // 用它来取代"被删节点"的位置，然后再将"被删节点"去掉。
+            RedBlackTreeNode<T> replace = node;
+
+            // 获取后继节点
+            replace = replace.right;
+            while (replace.left != null)
+                replace = replace.left;
+
+            // "node节点"不是根节点(只有根节点不存在父节点)
+            if (parentOf(node)!=null) {
+                if (parentOf(node).left == node)
+                    parentOf(node).left = replace;
+                else
+                    parentOf(node).right = replace;
+            } else {
+                // "node节点"是根节点，更新根节点。
+                this.mRoot = replace;
+            }
+
+            // child是"取代节点"的右孩子，也是需要"调整的节点"。
+            // "取代节点"肯定不存在左孩子！因为它是一个后继节点。
+            child = replace.right;
+            parent = parentOf(replace);
+            // 保存"取代节点"的颜色
+            color = colorOf(replace);
+
+            // "被删除节点"是"它的后继节点的父节点"
+            if (parent == node) {
+                parent = replace;
+            } else {
+                // child不为空
+                if (child!=null)
+                    setParent(child, parent);
+                parent.left = child;
+
+                replace.right = node.right;
+                setParent(node.right, replace);
+            }
+
+            replace.parent = node.parent;
+            replace.color = node.color;
+            replace.left = node.left;
+            node.left.parent = replace;
+
+            if (color == BLACK)
+                removeFixUp(child, parent);
+
+            node = null;
+            return ;
+        }
+
+        if (node.left !=null) {
+            child = node.left;
+        } else {
+            child = node.right;
+        }
+
+        parent = node.parent;
+        // 保存"取代节点"的颜色
+        color = node.color;
+
+        if (child!=null)
+            child.parent = parent;
+
+        // "node节点"不是根节点
+        if (parent!=null) {
+            if (parent.left == node)
+                parent.left = child;
+            else
+                parent.right = child;
+        } else {
+            this.mRoot = child;
+        }
+
+        if (color == BLACK)
+            removeFixUp(child, parent);
+        node = null;
+    }
+
+    /*
+     * 删除结点(z)，并返回被删除的结点
+     *
+     * 参数说明：
+     *     tree 红黑树的根结点
+     *     z 删除的结点
+     */
+    public void remove(T key) {
+        RedBlackTreeNode<T> node;
+
+        if ((node = search(mRoot, key)) != null)
+            remove(node);
+    }
+
+    /*
+ * 红黑树删除修正函数
+ *
+ * 在从红黑树中删除插入节点之后(红黑树失去平衡)，再调用该函数；
+ * 目的是将它重新塑造成一颗红黑树。
+ *
+ * 参数说明：
+ *     node 待修正的节点
+ */
+    private void removeFixUp(RedBlackTreeNode<T> node, RedBlackTreeNode<T> parent) {
+        RedBlackTreeNode<T> other;
+
+        while ((node==null || isBlack(node)) && (node != this.mRoot)) {
+            if (parent.left == node) {
+                other = parent.right;
+                if (isRed(other)) {
+                    // Case 1: x的兄弟w是红色的  
+                    setBlack(other);
+                    setRed(parent);
+                    leftRotate(parent);
+                    other = parent.right;
+                }
+
+                if ((other.left==null || isBlack(other.left)) &&
+                        (other.right==null || isBlack(other.right))) {
+                    // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的  
+                    setRed(other);
+                    node = parent;
+                    parent = parentOf(node);
+                } else {
+
+                    if (other.right==null || isBlack(other.right)) {
+                        // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。  
+                        setBlack(other.left);
+                        setRed(other);
+                        rightRotate(other);
+                        other = parent.right;
+                    }
+                    // Case 4: x的兄弟w是黑色的；并且w的右孩子是红色的，左孩子任意颜色。
+                    setColor(other, colorOf(parent));
+                    setBlack(parent);
+                    setBlack(other.right);
+                    leftRotate(parent);
+                    node = this.mRoot;
+                    break;
+                }
+            } else {
+
+                other = parent.left;
+                if (isRed(other)) {
+                    // Case 1: x的兄弟w是红色的  
+                    setBlack(other);
+                    setRed(parent);
+                    rightRotate(parent);
+                    other = parent.left;
+                }
+
+                if ((other.left==null || isBlack(other.left)) &&
+                        (other.right==null || isBlack(other.right))) {
+                    // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的  
+                    setRed(other);
+                    node = parent;
+                    parent = parentOf(node);
+                } else {
+
+                    if (other.left==null || isBlack(other.left)) {
+                        // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。  
+                        setBlack(other.right);
+                        setRed(other);
+                        leftRotate(other);
+                        other = parent.left;
+                    }
+
+                    // Case 4: x的兄弟w是黑色的；并且w的右孩子是红色的，左孩子任意颜色。
+                    setColor(other, colorOf(parent));
+                    setBlack(parent);
+                    setBlack(other.left);
+                    rightRotate(parent);
+                    node = this.mRoot;
+                    break;
+                }
+            }
+        }
+
+        if (node!=null)
+            setBlack(node);
     }
 }
