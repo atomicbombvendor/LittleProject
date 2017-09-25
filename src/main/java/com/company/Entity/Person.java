@@ -59,4 +59,13 @@ public class Person<T> extends Father{
         result = 31 * result + (t != null ? t.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", t=" + t +
+                '}';
+    }
 }

@@ -30,9 +30,10 @@ public class LambdaTest {
             };
 
     public static void main(String[] args) {
-        Function<Double,Double> t = division.apply(2.3);
-        System.out.println(t.apply(2.6));
-        System.out.println(i);
+//        Function<Double,Double> t = division.apply(2.3);
+//        System.out.println(t.apply(2.6));
+//        System.out.println(i);
+        testT1();
     }
 
     public static void collectT(){
@@ -82,7 +83,21 @@ public class LambdaTest {
 
         //下游收集器
         ps.stream().collect(groupingBy(Person::getName, mapping(Person::getName, toList())));
-        
+
+        //Test Comparable -> Comparator
+        List<Person> pss = new ArrayList<Person>(){{
+            this.add(new Person("xiaoming5",25));
+            this.add(new Person("xiaoming4",24));
+            this.add(new Person("xiaoming3",23));
+            this.add(new Person("xiaoming2",22));
+            this.add(new Person("xiaoming",21));
+        }};
+
+        pss.forEach(p -> System.out.println(p.toString()));
+        System.out.println("---");
+        pss.stream().sorted(Comparator.comparing(Person::getAge))
+                .forEach(p -> System.out.println(p.toString()));
+        System.out.println("Comparator comparing sorted 是 升序排列");
     }
 }
 
