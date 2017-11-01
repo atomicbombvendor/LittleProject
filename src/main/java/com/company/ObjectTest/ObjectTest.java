@@ -1,11 +1,16 @@
 package com.company.ObjectTest;
 
+import java.math.BigDecimal;
+
 /**
  * Created by ZZ on 2017/6/18.
- * 测试对象的帅引用
+ * 测试对象的引用
  */
 public class ObjectTest {
     public int value ;
+
+    public static final double POSITIVE_INFINITY = 1.0 / 0.0;
+
     ObjectTest(int value){
         this.value = value;
     }
@@ -20,6 +25,15 @@ public class ObjectTest {
         //o 指向参数对象的地址；对o的操作就是对对象的操作
     }
 
+    public static void testEquals(){
+        System.out.println("testEquals");
+
+        System.out.println("POSITIVE_INFINITY" + POSITIVE_INFINITY);
+        //这种转换会出现 NumberFormatException的异常。不能这样做
+        BigDecimal value = BigDecimal.valueOf(POSITIVE_INFINITY);
+        System.out.println(BigDecimal.valueOf(10).equals(value));
+
+    }
     public static void main(String[] args) {
         ObjectTest si1=new ObjectTest(1);
         System.out.println(si1.value);//输出1

@@ -1,12 +1,6 @@
 package com.company.InjectTest.SqlBuilder;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.StringJoiner;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**

@@ -1,7 +1,5 @@
 package com.company.DesignMode.StrategyPattern;
 
-import com.company.JavaBase.Extends.StaticsExtends2;
-
 /**
  * Created by eli9 on 9/8/2017.
  */

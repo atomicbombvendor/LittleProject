@@ -6,7 +6,9 @@ package com.company.ClassExtends;
 public class Man extends Person {
     private String man;
 
-    public Man(){}
+    public Man(){
+        System.out.println("Man Class");
+    }
 
     public String getMan() {
         return man;

@@ -1,7 +1,7 @@
 package com.company.DesignMode.observer;
 
 /**
- * Created by eli9 on 8/28/2017.
+ * 十进制
  */
 public class OctalObserver extends Observer{
 

@@ -1,7 +1,9 @@
 package com.company.DesignMode.observer;
 
+import javafx.beans.Observable;
+
 /**
- * Created by eli9 on 8/28/2017.
+ * Created by eli9 on 8/28/2017.\
  */
 public class ObserverPatternDemo {
     public static void main(String[] args) {
