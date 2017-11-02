@@ -1,7 +1,5 @@
 package com.company.DesignMode.observer;
 
-import javafx.beans.Observable;
-
 /**
  * Created by eli9 on 8/28/2017.\
  */
