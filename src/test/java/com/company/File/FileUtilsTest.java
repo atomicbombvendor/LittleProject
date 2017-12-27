@@ -18,8 +18,8 @@ public class FileUtilsTest {
 
     @Test
     public void test_processPortfolioFile() throws Exception {
-        String path = "D:\\Work\\Feed\\Compare\\Dev\\Portfolio\\Portfolio_20171122070251_Dev.txt";
-        String target = "D:\\Work\\Feed\\Compare\\Dev\\Portfolio\\target_Portfolio_20171122070251_Dev.txt";
+        String path = "D:\\Work\\Feed\\Compare\\Dev\\Portfolio\\Portfolio_20171123071010_Dev.txt";
+        String target = "D:\\Work\\Feed\\Compare\\Dev\\Portfolio\\target_Portfolio_20171123071010_Dev.txt";
         FileUtils.writeFile(target, FileUtils.getFileContent(path));
     }
 }

@@ -1,11 +1,18 @@
 package com.company.Lambda;
 
+import com.company.Entity.Person;
+import com.google.common.collect.Lists;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static com.google.common.base.Predicates.equalTo;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -80,4 +87,20 @@ public class LambdaTest2 {
         Stream.of("one", "two", "three", "four").peek(e -> System.out.println(e))
                 .collect(toList());
     }
+
+    @Test
+    public void testSortByName_with_lambda() throws Exception {
+
+        ArrayList<Person> humans = Lists.newArrayList(
+                new Person("TP", 22),
+                new Person("TD", 25),
+                new Person("TR", 25),
+                new Person("TA", 25)
+        );
+        System.out.println(humans.get(0).getName());
+        humans.sort(Comparator.comparing(Person::getName));
+
+        Assert.assertEquals("TA", humans.get(0).getName());
+    }
+
 }
