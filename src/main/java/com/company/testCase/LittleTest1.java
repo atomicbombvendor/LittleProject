@@ -16,5 +16,11 @@ public class LittleTest1 {
         System.out.println(f3 == f4); //false
         //Java 享元模式 -128~127的数字会被重用 大于这个的不会
 
+
+        String str ="0P0000X48I20150831";
+                   //123456789abcdefghi
+        //截取位置start - (end-1),截取的长度为 (end-start)
+        //0~10 截取0~9，长度为10
+        System.out.println(str.substring(0,10)+"||"+str.substring(10,18));
     }
 }

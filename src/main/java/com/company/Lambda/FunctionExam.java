@@ -3,7 +3,10 @@ package com.company.Lambda;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * Created by eli9 on 3/16/2017.
@@ -32,10 +35,28 @@ public class FunctionExam {
     }
                                                 //multiple argument(0~n)
     public static int decoratorExam(int value, Function<Integer, Integer> ... decorators) {
-//        return Arrays.asList(decorators).stream().reduce((current, next) -> current.andThen(next)).orElse
+//        return ArrayTst.asList(decorators).stream().reduce((current, next) -> current.andThen(next)).orElse
 //                (Function::identity).apply(value);
         return Arrays.asList(decorators).stream().reduce((current, next) -> current.andThen(next))
                 .orElseGet(Function::identity).apply(value);
+    }
+
+    public static void lamdabGrammerTest(){
+        System.out.println("lamdabGrammerTest");
+        Predicate<String> pre = (x) -> {
+            System.out.print(x);
+            return false;
+        };
+        System.out.println(": "+pre.test("Hello world"));
+
+        //no return value
+        Consumer<String> con = (x) -> {
+            System.out.println(x);
+        };
+        con.accept("Hello world");
+
+        BinaryOperator<String> bina = (x, y) ->{System.out.print(x+" "+y);return "BinaryOperator";};
+        System.out.println("**"+bina.apply("hello ","world"));
     }
 
     public static void main(String[] args) {
@@ -57,5 +78,7 @@ public class FunctionExam {
         System.out.println(list.stream().reduce(
                 (result,element)-> result+element).orElseGet(()->100)
         );
+
+        lamdabGrammerTest();
     }
 }

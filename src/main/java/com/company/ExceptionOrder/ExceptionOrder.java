@@ -1,5 +1,8 @@
 package com.company.ExceptionOrder;
 
+import com.company.Entity.Person;
+import org.dom4j.Document;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -9,6 +12,11 @@ import java.io.InputStream;
  */
 public class ExceptionOrder {
     public static String file = "cdctables.properties";
+    public static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(ExceptionOrder.class);
+
+    public static void main(String[] args) {
+        testTestThrows();
+    }
 
     public static String test1(){
         try{
@@ -101,13 +109,64 @@ public class ExceptionOrder {
             System.out.println("GET");
         }
     }
-    public static void main(String[] args) {
-        //System.out.println(test1());
-        //System.out.println(test2());
-        //System.out.println(test3());
-        //System.out.println(test4());
-        //System.out.println(test5());
-        //System.out.println(test6_1());
-        test6_1();
+
+    /**
+     * 测试打印出异常的stack信息
+     */
+    public static void  testPrintStack(){
+        try {
+            System.out.println(11);
+            throw new Exception("aaa");
+        } catch (Exception e) {
+            System.out.println(org.apache.commons.lang.exception.ExceptionUtils
+                    .getFullStackTrace(e));
+        }
     }
+
+    /**
+     * 测试当异常发生时，不在catch语句写明return，抛出的是空值吗？
+     */
+    public static Person testThrows() {
+        Person p1 = new Person();
+        Document doc = null;
+        if(doc == null){
+            log.error("doc is null");
+            throw new RuntimeException("doc is null");
+        }
+        return p1;
+    }
+
+    /**
+     * 测试testThrows方法的测试方法
+     * 测试结果：异常发生后，抛出的结果为空值
+     */
+    public static void testTestThrows(){
+        Person p = null;
+        int attempts = 0;
+        while (++attempts <= 3) {
+            try {
+                p = testThrows();
+                if(p != null){break;}
+            } catch (Exception e) {
+                //重试的等待200毫秒，为了等待服务器响应。
+                //发送请求后，等待服务器响应。服务器可能由于请求太多或资源不够，不能在不间断的请求，
+                //所以需要间隔一段时间
+                try {
+                    Thread.sleep((long)(200*Math.pow(attempts,2)));
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                if (attempts == 3) {
+                    System.out.println("Tried " + attempts + " times to getPerformanceIdList " + "\n " + e);
+                }
+            }
+        }
+        if(p == null){
+            System.out.println("p is null");
+        }else{
+            System.out.println("P is not null");
+        }
+    }
+
 }

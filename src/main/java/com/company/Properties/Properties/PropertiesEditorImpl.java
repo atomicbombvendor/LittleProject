@@ -4,6 +4,8 @@ import java.io.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.util.Collection;
 import java.util.Properties;
 
 /**
@@ -25,12 +27,18 @@ public class PropertiesEditorImpl implements PropertiesEditor  {
         }
     }
 
-    public String[] getPrimaryKey(String primaryKey){
-        if(properties != null) {
+    public String[] getPrimaryKey(String primaryKey){try{
+        System.out.println(22);
+    }finally {
+
+    }
+
+    if(properties != null) {
              return properties.getProperty(primaryKey).split(";");
         }else {
             return null;
         }
+
     }
 
     public String[] getFields(String field){
