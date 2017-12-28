@@ -5,11 +5,14 @@ import com.company.Entity.ExchangeEntity;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by eli9 on 5/16/2017.
  */
 public class FileUtils {
+
+
     /**
      * 得到目录下面所有的文件
      *
@@ -311,4 +314,8 @@ public class FileUtils {
         }
 
     }
+
+//    public static void main(String[] args) {
+//        writeFile(ReadXML.getExchangeList());
+//    }
 }
