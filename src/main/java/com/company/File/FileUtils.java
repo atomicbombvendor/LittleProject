@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Created by eli9 on 5/16/2017.
+ * Created by eli9 on 5/16/2017.\
  */
 public class FileUtils {
 
@@ -315,7 +315,18 @@ public class FileUtils {
 
     }
 
+<<<<<<< Updated upstream
 //    public static void main(String[] args) {
 //        writeFile(ReadXML.getExchangeList());
 //    }
+=======
+    /**
+     * 替换本地路径下所有某格式文件的内容(bat txt etc)
+     */
+    public static void replaceContent(String path, String source, String target, String fileType){
+        File[] files = getFiles(path, ".*\\."+fileType);
+        
+
+    }
+>>>>>>> Stashed changes
 }
