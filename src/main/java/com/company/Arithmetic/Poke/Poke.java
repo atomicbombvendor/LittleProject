@@ -14,7 +14,8 @@ public class Poke {
      * @return 出牌的规则
      */
     public static String[] diviendPokeRule(String pokes) {
-
+        //先排序
+        //在找
     }
 
 }
