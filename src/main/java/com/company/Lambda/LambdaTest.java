@@ -6,16 +6,12 @@ import junit.framework.Assert;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static com.company.Lambda.BasicCalc.divide;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.*;
 
-/**
- * Created by eli9 on 3/15/2017.
- */
 public class LambdaTest {
     static int i;
     public static Function<Double, Function<Double, Double>> division = first ->

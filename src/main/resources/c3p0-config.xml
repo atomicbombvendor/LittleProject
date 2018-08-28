@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	<!-- This is default config! -->
+	<default-config>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+	</default-config>
+	
+	<!-- tsdb live -->
+	<named-config name="oimaindb81">
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://oimaindb81:3306/MetaIndex</property>
+		<property name="user">QAClient</property>
+		<property name="password"><![CDATA[bb*-?20%0@71229YshGo~>]]></property>
+		<property name="initialPoolSize">1</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">1</property>
+		<property name="numHelperThreads">20</property>
+	</named-config>
+	
+	<!--tsdb netezza stage -->
+	<named-config name="netezza">
+		<property name="driverClass">org.netezza.Driver</property>
+		<property name="jdbcUrl">jdbc:netezza://172.28.15.4:5480/MSNZSTG?zeroDateTimeBehavior=convertToNull</property>
+		<property name="user">vzhao</property>
+		<property name="password">Zhao123</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+		<property name="numHelperThreads">50</property>
+	</named-config>
+	
+	<!--tsdb netezza stage -->
+	<named-config name="NetezzaDEV">
+		<property name="driverClass">org.netezza.Driver</property>
+		<property name="jdbcUrl">jdbc:netezza://172.28.15.4:5480/MSNZDEV/</property>
+		<property name="user">vzhao</property>
+		<property name="password">Zhao123</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+		<property name="numHelperThreads">50</property>
+	</named-config>
+	
+	<!--tsdb netezza QA -->
+	<named-config name="NetezzaQA">
+		<property name="driverClass">org.netezza.Driver</property>
+		<property name="jdbcUrl">jdbc:netezza://172.28.15.4:5480/MSNZQA/</property>
+		<property name="user">vzhao</property>
+		<property name="password">Zhao123</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+		<property name="numHelperThreads">50</property>
+	</named-config>
+	
+	<!-- tsdb dev for Replacement -->
+	<named-config name="dtsdevinfra81" >
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://dtsdevinfra81:3306/MetaIndex</property>
+        <property name="user">QAClient</property>
+        <property name="password">sz</property>
+        <property name="initialPoolSize">5</property>
+        <property name="maxIdleTime">30</property>
+        <property name="maxPoolSize">20</property>
+        <property name="minPoolSize">5</property>
+        </named-config>
+
+
+		
+	<!-- notification System -->
+	<named-config name="geworkingdb61">
+		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="jdbcUrl">jdbc:sqlserver://geworkingdb61\geworkingdb61;DatabaseName=Logging</property>
+		<property name="user">GeDataAgent</property>
+		<property name="password"><![CDATA[eDR#me@]]></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!--LOCAL MACHINE-->
+	<named-config name="LOCAL">
+		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="jdbcUrl">jdbc:sqlserver://SZPC2068;DatabaseName=CalcDB</property>
+		<property name="user">test</property>
+		<property name="password"><![CDATA[1]]></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!--EquityProd-->
+	<named-config name="Equity_Prod">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://geproddb62;DatabaseName=CentralRawData</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	<!--EquityProd QA-->
+	<named-config name="Equity_Prod_QA">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://gecalcdevdb8006;DatabaseName=CentralRawData</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	<!--EquitySqlMart DEV-->
+	<named-config name="Equity_SqlMart_DEV">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://dataapi-db-dev;DatabaseName=mart</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	<!--EquitySqlMart QA-->
+	<named-config name="Equity_SqlMart_QA">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://DFMETAQADB8001;DatabaseName=mart</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!--EquityDev-->
+	<named-config name="EquityProduction_Dev">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://gecalcdevdb8006</property>
+		<property name="user">GEDQATeam_QA</property>
+		<property name="password">he9PR2pQ</property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	
+	<!-- TSDB Sourcing NAV FOR CE MOCAL-1896  Zewei  -->
+	<named-config name="MSCMNDEVDB8001">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://MSCMNDEVDB8001:1433/Notifications;useNTLMv2=true;domain=msdomain1;multiSubnetFailover=true;</property> 
+		<property name="user">DATA_API_NONPROD</property>
+		<property name="password"><![CDATA[t@%rhATnxgZ2]]></property>
+		<property name="initialPoolSize">1</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">50</property>
+		<property name="minPoolSize">1</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">10</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property> 
+	</named-config>
+		
+	<!-- notification System -->
+	<named-config name="outputdev">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://gedevdb1;instance=OUTPUTDBDEV</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!-- FDL Live -->
+	<named-config name="FDLSTG">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://dceqdb602</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<named-config name="SQLMartQA">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://dfmetaqadb8001</property>
+		<property name="user">DATA_API_NONPROD</property>
+		<property name="password"><![CDATA[t@%rhATnxgZ2]]></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!--  ATLAS_LIVE_GEDISTDB601 -->
+	<named-config name="ATLAS_LIVE_GEDISTDB601">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://geproddb62</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!--  ATLAS_LIVE_geproddb62 -->
+	<named-config name="ATLAS_LIVE_geworkdb601">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://geworkdb601</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>	
+	
+	<!-- Atlas dev -->
+	<named-config name="ATLAS_DEV">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://GEGTWKDEVDB8001</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!-- szdcdevdb01 -->
+	<named-config name="szdcdevdb01">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://szdcdevdb01</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!-- DP-DB-QA -->
+	<named-config name="DPDBQA">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://DP-DB-QA</property>
+		<property name="user">DMClient</property>
+		<property name="password"><![CDATA[#Xx)#))bH9WS]]></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!-- MEDS Live -->
+	<named-config name="DataCollection_live">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://dceqdb601</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	<!-- Fund dev -->
+	<named-config name="Oidevdb81">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://Oidevdb81;instance=oidevoutputdb81;DatabaseName=DataIndex</property>
+		<property name="user">InfaDataClient</property>
+		<property name="password">aT9slp</property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!-- Fund live -->
+	<named-config name="OIContentDB61">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://OIContentDB61:1433;DatabaseName=DataIndex</property>
+		<property name="user"></property>
+		<property name="password"></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+	
+	<!-- not use -->
+	<named-config name="mysql">
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/test</property>
+		<property name="user">root</property>
+		<property name="password"></property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+	</named-config>
+
+	<!-- not use -->
+	<named-config name="oracle">
+		<property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
+		<property name="jdbcUrl">jdbc:oracle:thin:@localhost:1521:orcl</property>
+		<property name="user">scott</property>
+		<property name="password">liang</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+	</named-config>
+
+	<!-- This is my config for notification System -->
+	<named-config name="TestCENotification">
+		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="jdbcUrl">jdbc:sqlserver://NTDevMainDB81\NTDevMainDB81;DatabaseName=DataStatus</property>
+		<property name="user">DataEditor</property>
+		<property name="password"><![CDATA[S*(2kNTN3b]]]></property>
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	<named-config name="GeOutputDB601">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://geoutputdb601;DatabaseName=ReferenceData</property>
+		<property name="user"></property>
+		<property name="password"></property> # windows authentication
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+
+	<named-config name="GeExoiDevDB8009">
+		<property name="driverClass">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:jtds:sqlserver://geexoidevdb8009;DatabaseName=ReferenceData</property>
+		<property name="user"></property>
+		<property name="password"></property> # windows authentication
+		<property name="initialPoolSize">5</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">20</property>
+		<property name="minPoolSize">5</property>
+		<property name="acquireIncrement">1</property>
+		<property name="acquireRetryAttempts">30</property>
+		<property name="acquireRetryDelay">100</property>
+		<property name="testConnectionOnCheckin">false</property>
+	</named-config>
+</c3p0-config>
