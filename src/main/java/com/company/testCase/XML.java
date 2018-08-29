@@ -42,7 +42,7 @@ public class XML {
 
                 for (int i = 0; i < 2; i++) {
                     Element OwnerNode = (Element) OwnerNodeList.item(i);
-                    //String value = OwnerNode.getNodeName() + ":" + OwnerNode.getNodeValue();
+                    //String value = OwnerNode.getNodeName() + ":" + OwnerNode.getData();
                     //System.out.println(value);
                     int OwnerNameLenghth = OwnerNode.getElementsByTagName("OwnerName").getLength();
                     if(OwnerNameLenghth > 0){
