@@ -16,4 +16,8 @@ public class TestATest {
         TestA A = (TestA)ac.getBean("TestA");
     }
 
+    @Test
+    public void testInt(){
+        Integer a = Integer.valueOf("0.23");
+    }
 }
