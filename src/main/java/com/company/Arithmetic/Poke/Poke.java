@@ -16,6 +16,7 @@ public class Poke {
     public static String[] diviendPokeRule(String pokes) {
         //先排序
         //在找
+        return null;
     }
 
 }

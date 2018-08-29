@@ -14,7 +14,7 @@ public class TreeNode<T> {
         this.data = data;
     }
 
-    public TreeNode<T> addChildren(TreeNode<T> child){
+    public TreeNode<T> addChild(TreeNode<T> child){
         if (Objects.isNull(children)){
             this.children = new ArrayList<>(0);
         }
@@ -24,7 +24,7 @@ public class TreeNode<T> {
         return child;
     }
 
-    public void addChildren(List<TreeNode<T>> children){
+    public void addChild(List<TreeNode<T>> children){
         children.forEach(each -> each.setParent(this));
         this.children.addAll(children);
     }
