@@ -1,4 +1,4 @@
-package com.company.Arithmetic.FirstLetterSearch;
+package com.company.arithmetic.firstlettersearch;
 
 import java.util.ArrayList;
 import java.util.Collections;

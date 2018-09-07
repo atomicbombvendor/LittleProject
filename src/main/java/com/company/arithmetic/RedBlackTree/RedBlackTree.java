@@ -1,4 +1,4 @@
-package com.company.Arithmetic.RedBlackTree;
+package com.company.arithmetic.RedBlackTree;
 
 /**
  * Created by eli9 on 9/14/2017.
