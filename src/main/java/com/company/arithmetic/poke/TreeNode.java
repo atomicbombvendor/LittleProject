@@ -1,4 +1,4 @@
-package com.company.Arithmetic.Poke;
+package com.company.arithmetic.poke;
 
 import java.util.ArrayList;
 import java.util.List;
