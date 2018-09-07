@@ -1,4 +1,4 @@
-package com.company.Arithmetic;
+package com.company.arithmetic;
 
 /**
  * Created by eli9 on 12/12/2017./

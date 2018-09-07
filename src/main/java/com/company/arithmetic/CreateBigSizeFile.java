@@ -1,4 +1,4 @@
-package com.company.Arithmetic;
+package com.company.arithmetic;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

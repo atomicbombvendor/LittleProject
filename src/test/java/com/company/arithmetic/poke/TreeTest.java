@@ -1,7 +1,6 @@
-package com.company.Arithmetic.Poke;
+package com.company.arithmetic.poke;
 
 import org.junit.Test;
-import sun.reflect.generics.tree.Tree;
 
 public class TreeTest {
 
