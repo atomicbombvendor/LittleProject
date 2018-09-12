@@ -93,18 +93,13 @@ public class TreeUtils {
 
                 }
 
-
                 //打印一些空格
                 for (int j=0;j<nBlank*2-2;j++){
                     //System.out.print("&");
                     System.out.print("*");
                 }
 
-
-
-
             }//while end
-
 
             System.out.println();
             nBlank/=2;
@@ -112,11 +107,8 @@ public class TreeUtils {
             while (localStack.isEmpty()==false){
                 globalStack.push(localStack.pop());
             }
-
             // }
         }//大while循环结束之后，输出换行
         System.out.println(dot+dot+dot);
-
     }
-
 }
