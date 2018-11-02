@@ -1,5 +1,7 @@
 package com.company.arithmetic.dijkstra;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -130,7 +132,6 @@ public class WeightedNonDirectedGraph{
             //更新之后破坏了堆序性质,需要进行堆调整,这里直接重新构造堆(相当于decreaseKey)
             heap.buildHeap();
         }
-
     }
 
     private void init(BinaryHeap<Vertex> heap){
@@ -146,7 +147,8 @@ public class WeightedNonDirectedGraph{
             printPath(v);
             System.out.println();
             System.out.println(v.roadLabel + " " + v.vertexLabel + "站 -> " + startVertex.roadLabel +
-                    " " + startVertex.vertexLabel + " 距离: " + v.dist);
+                    " " + startVertex.vertexLabel + " 最短距离: " + BigDecimal.valueOf(v.dist)
+                    .setScale(2, RoundingMode.HALF_UP).floatValue());
         }
     }
 

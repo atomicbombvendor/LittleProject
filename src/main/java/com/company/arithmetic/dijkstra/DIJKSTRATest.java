@@ -1,5 +1,6 @@
 package com.company.arithmetic.dijkstra;
 
+
 public class DIJKSTRATest {
     public static void main(String[] args) {
 
@@ -12,5 +13,8 @@ public class DIJKSTRATest {
         graph.dijkstra();
 
         graph.showDistance();
+
+        // https://www.cnblogs.com/hapjin/p/5654756.html 图
+        // https://blog.csdn.net/zhang_zp2014/article/details/47863575 堆
     }
 }
