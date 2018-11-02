@@ -28,7 +28,7 @@ public class WeightedNonDirectedGraph{
 
         private double dist;
 
-        /** 配合dist，记录上一个节点 **/
+        /** 配合dist，记录上一个节点到当前点的距离 **/
         private Vertex preNode;
 
         public Vertex(String roadLabel, String vertexLabel){
@@ -147,6 +147,23 @@ public class WeightedNonDirectedGraph{
             System.out.println(v.roadLabel + " " + v.vertexLabel + "站 -> " + startVertex.roadLabel +
                     " " + startVertex.vertexLabel + " 最短距离: " + BigDecimal.valueOf(v.dist)
                     .setScale(2, RoundingMode.HALF_UP).floatValue());
+        }
+    }
+
+    /**
+     * 打印出所有经过某站点的地铁线路名称
+     * @param subwayStationName 地铁站名称
+     */
+    public void printRoad(String subwayStationName){
+        List<Edge> edges = weightedGraph.get(subwayStationName).adjEdges;
+        if (edges == null || edges.size() == 0){
+            System.out.println("抱歉，当前站没有线路。");
+            return;
+        }
+
+        System.out.println(String.format("所有经过 %s 有 %d 条线路。", subwayStationName, edges.size()));
+        for (Edge edge: edges) {
+            System.out.println(edge.edgeVertex.roadLabel);
         }
     }
 
