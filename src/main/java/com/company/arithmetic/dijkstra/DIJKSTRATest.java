@@ -6,10 +6,12 @@ public class DIJKSTRATest {
 
 //        String file = "../subway_processed.txt";
         // 文件的绝对路径
-        String file = "E:\\Project\\Java\\LittleProject\\src\\main\\java\\com\\company\\arithmetic\\dijkstra\\subway_processed.txt";
+        String file = "E:\\Project\\Java\\LittleProject\\src\\main\\java\\com\\company\\arithmetic\\dijkstra" +
+                "\\subway_processed_test.txt";
         String fileContent = FileUtils.read(file);
 
-        WeightedNonDirectedGraph graph = new WeightedNonDirectedGraph(fileContent);
+        WeightedNonDirectedGraph graph = new WeightedNonDirectedGraph();
+        graph.buildGraph(fileContent);
         graph.dijkstra();
 
         graph.showDistance();

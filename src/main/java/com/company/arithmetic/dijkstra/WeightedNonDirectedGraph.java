@@ -54,26 +54,25 @@ public class WeightedNonDirectedGraph{
     private class Edge{
         /** 权重 距离 **/
         private double weight;
-        private Vertex endVertex;
+        private Vertex edgeVertex;
         public Edge(double weight, Vertex endVertex) {
             this.weight = weight;
-            this.endVertex = endVertex;
+            this.edgeVertex = endVertex;
         }
     }
 
     /**
      * 图的信息保存在文件中,从文件中读取成字符串graphContent
      */
-    public WeightedNonDirectedGraph(String graphContent) {
+    public WeightedNonDirectedGraph() {
         weightedGraph = new LinkedHashMap<>();
-        buildGraph(graphContent);
     }
 
     /**
-     * 构造无向加权图
+     * 构造无向加权图; 图保存在weightedGraph
      * @param graphContent content read from file
      */
-    private void buildGraph(String graphContent){
+    public void buildGraph(String graphContent){
         String[] lines = graphContent.split("\n");
 
         String startNodeLabel, endNodeLabel, roadLable;
@@ -97,11 +96,10 @@ public class WeightedNonDirectedGraph{
                 startNode = new Vertex(roadLable, startNodeLabel);
                 weightedGraph.put(startNodeLabel, startNode);
             }
-            Edge e = new Edge(weight, endNode);
 
             //对于无向图而言,起点和终点都要添加边
-            endNode.adjEdges.add(e);
-            startNode.adjEdges.add(e);
+            endNode.adjEdges.add(new Edge(weight, startNode));
+            startNode.adjEdges.add(new Edge(weight, endNode));
         }
         //总是以文件中第一行第二列的那个标识顶点作为源点
         startVertex = weightedGraph.get(lines[0].split("\\|\\|")[1]);
@@ -121,7 +119,7 @@ public class WeightedNonDirectedGraph{
             //获取v的所有邻接点
             List<Edge> adjEdges = v.adjEdges;
             for (Edge e : adjEdges) {
-                Vertex adjNode = e.endVertex;
+                Vertex adjNode = e.edgeVertex;
                 //update
                 if(adjNode.dist > e.weight + v.dist){
                     adjNode.dist = e.weight + v.dist;
