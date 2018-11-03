@@ -17,16 +17,16 @@ public class Poke {
      * 比如：A的数字值是1，对应于数组中的Value1 = AllPokes[1]
      * Value1是当前牌A的数量
      */
-    private static Integer[][] AllPokes = new Integer[14][1];
+    private Integer[][] AllPokes = new Integer[14][1];
 
-    public static Integer[][] getAllPokes() {
+    public Integer[][] getAllPokes() {
         return AllPokes;
     }
 
     /**
      * 填充AllPokes
      */
-    public static void analyzePokes(String pokes){
+    public void analyzePokes(String pokes){
         System.out.print("You pokes are ");
         printArray(pokes.toCharArray());
 
@@ -54,7 +54,7 @@ public class Poke {
      * @param pokes 要分配的牌
      * @return 出牌的规则
      */
-    public static String[] dividendPokeRule(String pokes) {
+    public String[] dividendPokeRule(String pokes) {
         System.out.print("You pokes are ");
         printArray(pokes.toCharArray());
         //先排序
@@ -81,12 +81,12 @@ public class Poke {
      * 这个排序算法可以用Arrays.sort来做，使用了TimSort,是归并算法的版本;
      * 打算用归并排序来做
      */
-    private static void orderArray(Integer[] pokes){
+    private void orderArray(Integer[] pokes){
         Integer[] temp = new Integer[pokes.length];
         sort(pokes, 0, pokes.length-1, temp);
     }
 
-    private static void sort(Integer[] pokes, int left, int right, Integer[] temp){
+    private void sort(Integer[] pokes, int left, int right, Integer[] temp){
         if (left < right){
             int mid = (left + right)/2;
             sort(pokes, left, mid, temp);
@@ -95,7 +95,7 @@ public class Poke {
         }
     }
 
-    private static void merge(Integer[] pokes, int left, int mid, int right, Integer[] temp){
+    private void merge(Integer[] pokes, int left, int mid, int right, Integer[] temp){
         //用来标记放入temp的标记位
         int t = left;
         int i = left;
@@ -128,7 +128,7 @@ public class Poke {
     /**
      * 恢复扑克牌的 1=>A, 10=>T, 11=>J, 12=>Q, 13=>K
      */
-    private static String[] restorePoke(Integer[] pokes){
+    private String[] restorePoke(Integer[] pokes){
         String[] pokesStr = new String[pokes.length];
         for (int i=0; i< pokes.length; i++){
             if (1 == pokes[i]){
@@ -153,7 +153,7 @@ public class Poke {
      * A=>A B=>2 C=>3 D=>4 E=>5 F=>6 G=>7 H=>8 I=>9
      * J=>T K=>J L=>Q M=>k
      */
-    private static void restorePoke(String[] pokes){
+    private void restorePoke(String[] pokes){
         String[] tmp = new String[pokes.length];
         for (int i=0; i< pokes.length; i++){
             if ("A".equals(String.valueOf(pokes[i]))) {
@@ -185,7 +185,7 @@ public class Poke {
      * K -> 13
      * @param pokes 要替换的扑克牌
      */
-    private static Integer[] transIntPoke(char[] pokes){
+    private Integer[] transIntPoke(char[] pokes){
         Integer[] pokeArrStr = new Integer[pokes.length];
         for (int i=0; i < pokes.length; i++){
             if ("A".equals(String.valueOf(pokes[i]))){
@@ -212,7 +212,7 @@ public class Poke {
      * @param pokes 未转换的扑克牌
      * @return 转换后的扑克牌
      */
-    private static String[] transStrPoke(char[] pokes){
+    private String[] transStrPoke(char[] pokes){
         String[] pokeArrStr = new String[pokes.length];
         for (int i=0; i < pokes.length; i++){
             if (charsShouldBound.contains(pokes[i])) {
@@ -241,11 +241,11 @@ public class Poke {
      * @param pokes 要分析的牌
      * @return 可能的出牌情况
      */
-    private static String[][] playPokeCase(String[] pokes){
+    private String[][] playPokeCase(String[] pokes){
         return null;
     }
 
-    private static String printArray(Integer[] source){
+    private String printArray(Integer[] source){
         StringBuilder sb = new StringBuilder();
         for (Integer s: source) {
             sb.append(s);
@@ -255,7 +255,7 @@ public class Poke {
         return sb.toString();
     }
 
-    private static String printArray(String[] source){
+    private String printArray(String[] source){
         StringBuilder sb = new StringBuilder();
         for (String s: source) {
             sb.append(s);
@@ -265,7 +265,7 @@ public class Poke {
         return sb.toString();
     }
 
-    private static String printArray(char[] source){
+    private String printArray(char[] source){
         StringBuilder sb = new StringBuilder();
         for (char s: source) {
             sb.append(s);
@@ -275,14 +275,21 @@ public class Poke {
         return sb.toString();
     }
 
-    public static void printAllPokes(){
+    public void printAllPokes(){
         Integer[][] tmp = getAllPokes();
         for (int i=1; i< tmp.length; i++){
             System.out.println("Poke " + getPoke(i) + " have " + tmp[i][0]);
         }
     }
 
-    private static String getPoke(Integer pokeInt) {
+    public Integer[][] subCurrentPoke(List<Integer> pokes, Integer[][] allPokes){
+        for (Integer p : pokes){
+            allPokes[p][0] = allPokes[p][0]-1;
+        }
+        return allPokes;
+    }
+
+    private String getPoke(Integer pokeInt) {
         if (pokeInt <= 9 && pokeInt >= 2) {
             return pokeInt.toString();
         } else {
