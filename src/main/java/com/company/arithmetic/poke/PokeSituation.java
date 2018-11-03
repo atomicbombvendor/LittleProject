@@ -1,8 +1,6 @@
 package com.company.arithmetic.poke;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author ZZ
@@ -15,8 +13,6 @@ public class PokeSituation {
      */
     public static List<List<Integer>> getAllSituation(Integer[][] pokes){
         List<List<Integer>> allSituation = new LinkedList<>();
-        // 对子
-        allSituation.addAll(getAllPairs(pokes));
         // 顺子
         allSituation.addAll(getAllStraight(pokes));
         // 四带二
@@ -27,10 +23,14 @@ public class PokeSituation {
         allSituation.addAll(getAllMGenN(pokes, 4, 0));
         // 三不带
         allSituation.addAll(getAllMGenN(pokes, 3, 0));
+        // 对子
+        allSituation.addAll(getAllPairs(pokes));
         // 单张
         allSituation.addAll(getAllSingle(pokes));
 
-        return allSituation;
+        List<List<Integer>> tmp = new ArrayList<>(new HashSet<>(allSituation));
+
+        return tmp;
     }
 
     /**

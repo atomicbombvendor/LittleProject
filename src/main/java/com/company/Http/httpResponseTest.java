@@ -21,18 +21,18 @@ import java.util.List;
 public class httpResponseTest {
 
     public static void main(String[] args) {
-        String url = "http://xoi/XOISuite/IdList.aspx?Package=DataBank&Option=RecvMsgs_Start&ProductGroup=GEMORNITOR";
+        String url = "";
         String cookie =
-                "XoiLogin=A1AE34AA-7E4F-4542-BDF7-FEAF8A679347; expires=Fri, 14-Apr-2017 04:49:06 GMT; path=/";
+                "";
         String cookie2 =
-                "XoiLogin=A1AE34AA-7E4F-4542-BDF7-FEAF8A679347; expires=Fri, 14-Apr-2017 04:49:06 GMT; path=/;";
+                "";
         System.out.println(getResponseByURL(url,cookie));
         System.out.println(getString(url, cookie2));
     }
 
     public void gethttpResponse() throws IOException {
-        String userName = "xieyuepinran51437@163.com";
-        String password = "chunchunj";
+        String userName = "";
+        String password = "";
         String logurl = "https://passport.csdn.net/account/login?ref=toolbar";
         String url = "http://blog.csdn.net/z69183787/article/details/47171059";
         CredentialsProvider provider = new BasicCredentialsProvider();//这种认证方式不适用于github

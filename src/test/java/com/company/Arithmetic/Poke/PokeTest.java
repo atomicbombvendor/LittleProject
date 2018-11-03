@@ -1,4 +1,4 @@
-package com.company.Arithmetic.Poke;
+package com.company.arithmetic.poke;
 
 import org.junit.Test;
 
@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Stack;
 
 public class PokeTest {
+    private Poke poke = new Poke();
 
     @Test
     public void diviendPokeRule() {
-        Poke.dividendPokeRule("89A354TKJQ");
+        poke.dividendPokeRule("89A354TKJQ");
 
         Integer[] list = new Integer[5];
         list[0] = 1;
@@ -31,20 +32,20 @@ public class PokeTest {
      * @param root 为树的要节点或子树的根节点
      * @param pathList 为树中所有从根到叶子节点的路径的列表
      */
-    public void buildPath(Stack stack, Item root, List pathList) {
-        if (root != null) {
-            stack.add(root.getValue());
-            if (root.getNextItem().size() == 0) {
-                changeToPath(stack, pathList); // 把值栈中的值转化为路径
-            } else {
-                List items = root.getNextItem();
-                for (int i = 0; i < items.size(); i++) {
-                    buildPath(stack, items.get(i), pathList);
-                }
-            }
-            stack.remove(stack.size() - 1);
-        }
-    }
+//    public void buildPath(Stack stack, Item root, List pathList) {
+//        if (root != null) {
+//            stack.add(root.getValue());
+//            if (root.getNextItem().size() == 0) {
+//                changeToPath(stack, pathList); // 把值栈中的值转化为路径
+//            } else {
+//                List items = root.getNextItem();
+//                for (int i = 0; i < items.size(); i++) {
+//                    buildPath(stack, items.get(i), pathList);
+//                }
+//            }
+//            stack.remove(stack.size() - 1);
+//        }
+//    }
 
     /**
      * @param path

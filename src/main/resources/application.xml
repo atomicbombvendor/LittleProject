@@ -57,11 +57,5 @@
         <!--<property name="dataSource" ref="sqlMartDataSource" />-->
     <!--</bean>-->
 
-    <!--<bean id="testA" class="com.morningscompanystar.Dao.TestAestA">-->
-        <!--<property name="b" ref="testB"/>-->
-    <!--</bean>-->
-    <!--<bean id="testB" class="com.morningscompanystar.Dao.TestBestB">-->
-    <!--</bean>-->
-
     <!-- TestAOP2-->
 </beans>
