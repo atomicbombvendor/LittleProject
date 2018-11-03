@@ -1,7 +1,5 @@
 package com.company.arithmetic.dijkstra;
 
-import org.apache.commons.lang.StringUtils;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -13,6 +11,9 @@ public class WeightedNonDirectedGraph{
 
     /**  单源最短路径的起始顶点 **/
     private Vertex startVertex;
+    private Vertex endVertex;
+
+    private List<Vertex> shortest;
 
     private class Vertex implements Comparable<Vertex> {
         /** 顶点标识 */
@@ -101,6 +102,7 @@ public class WeightedNonDirectedGraph{
      */
     public WeightedNonDirectedGraph() {
         weightedGraph = new LinkedHashMap<>();
+        shortest = new LinkedList<>();
     }
 
     /**
@@ -138,15 +140,34 @@ public class WeightedNonDirectedGraph{
             endNode.adjEdges.add(new Edge(weight, startNode));
             startNode.adjEdges.add(new Edge(weight, endNode));
         }
-        //总是以文件中第一行第二列的那个标识顶点作为源点
-        startVertex = weightedGraph.get(lines[0].split("\\|\\|")[1]);
+
         System.out.println("所有的地铁站点已经导入。");
+    }
+
+    public void findShortest(String startStationName, String endStationName){
+        if (startStationName.isEmpty() ||
+                endStationName.isEmpty() ||
+                Objects.isNull(weightedGraph.get(startStationName)) ||
+                Objects.isNull(weightedGraph.get(endStationName))){
+            System.out.println("检查输入站点名是否存在或者为空");
+        }
+        startVertex = weightedGraph.get(startStationName);
+        dijkstra();
+        endVertex = weightedGraph.get(endStationName);
+    }
+
+    public void printShortest(){
+        printRoute(endVertex);
+    }
+
+    public List<Vertex> getShortest() {
+        return shortest;
     }
 
     /**
      * 最短优先路径
      */
-    public void dijkstra(){
+    private void dijkstra(){
         BinaryHeap<Vertex> heap = new BinaryHeap<>();
         //inital heap
         init(heap);
@@ -271,18 +292,13 @@ public class WeightedNonDirectedGraph{
         }
     }
 
-    public void printRoute(String endStationName){
-        Vertex end = weightedGraph.get(endStationName);
-        printRoute(end);
-    }
-
     private void printRoute(Vertex end){
-        System.out.println("距离是" + BigDecimal.valueOf(end.dist).setScale(2, RoundingMode.HALF_UP).floatValue());
+        System.out.println("距离是" + BigDecimal.valueOf(end.dist).setScale(2, RoundingMode.HALF_UP).floatValue() + "KM");
 
         // 置入路线到栈
         Stack<Vertex> route = new Stack<>();
         Vertex index = end;
-        System.out.println("路线: ");
+        System.out.print("最短路线: ");
         while(index != null) {
             route.push(index);
             index = index.preNode;
@@ -291,7 +307,8 @@ public class WeightedNonDirectedGraph{
         while(!route.empty()){
             Vertex current = route.pop();
             Vertex next = route.empty()?null:route.peek();
-            System.out.print(formatRoute(current, next) + ">>");
+            shortest.add(current);
+            System.out.print(formatRoute(current, next) + " >> ");
         }
         System.out.println("结束");
     }
@@ -373,20 +390,20 @@ public class WeightedNonDirectedGraph{
         stack.push(startStation);
         stationNames.push(startStation.getVertexLabel());
 
-        Vertex preStation = getPreStation(roadLabel, startVertex);
+        Vertex preStation = getPreStation(roadLabel, startStation);
         stack.push(preStation);
         stationNames.push(preStation.getVertexLabel());
 
         while (!checkStationIsEndPoint(roadLabel, preStation)) {
             List<Edge> edges = preStation.adjEdges;
             for (Edge edge : edges) {
-                if (edge.edgeVertex.roadLabel.contains(roadLabel) && !stationNames.contains(edge.edgeVertex
-                        .vertexLabel)) {
+                Vertex preEdge = edge.edgeVertex;
+                if (preEdge.roadLabel.contains(roadLabel) && !stationNames.contains(preEdge.vertexLabel)) {
 
-                    stack.push(edge.edgeVertex);
-                    stationNames.push(edge.edgeVertex.vertexLabel);
+                    stack.push(preEdge);
+                    stationNames.push(preEdge.vertexLabel);
 
-                    preStation = edge.edgeVertex;
+                    preStation = preEdge;
                 }
             }
         }
