@@ -16,7 +16,7 @@ import static com.google.common.base.Predicates.equalTo;
 import static java.util.stream.Collectors.toList;
 
 /**
- * Created by eli9 on 9/26/2017.
+ * Created by atomic on 9/26/2017.
  */
 public class LambdaTest2 {
 

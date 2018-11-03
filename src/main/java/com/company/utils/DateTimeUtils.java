@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by eli9 on 8/22/2017.
+ * Created by atomic on 8/22/2017.
  */
 public class DateTimeUtils {
     public static DateTimeFormatter yyyy_MM_dd = DateTimeFormatter.ofPattern("yyyy-MM-dd");

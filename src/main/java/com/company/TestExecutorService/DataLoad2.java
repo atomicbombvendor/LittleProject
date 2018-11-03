@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by eli9 on 4/21/2017.
+ * Created by atomic on 4/21/2017.
  * 内部类实现Runnable接口，通过成员线程池来实现调度。这里主要考虑是不是应该使用static的成员线程池
  * 1.通过调用一个对象方法可以实现线程池管理(静态的线程池成员）
  * 2.在循环体中不断的New对象，可以实现线程池管理(静态的线程池成员)

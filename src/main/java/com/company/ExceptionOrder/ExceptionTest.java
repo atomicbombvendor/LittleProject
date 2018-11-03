@@ -1,7 +1,7 @@
 package com.company.ExceptionOrder;
 
 /**
- * Created by eli9 on 6/29/2017.
+ * Created by atomic on 6/29/2017.
  */
 public class ExceptionTest {
     static String a[]={"123","abc",null};

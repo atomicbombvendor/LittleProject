@@ -3,7 +3,7 @@ package com.company.Thread;
 import java.util.Scanner;
 
 /**
- * Created by eli9 on 11/3/2017./
+ * Created by atomic on 11/3/2017./
  */
 public class Banker {
 

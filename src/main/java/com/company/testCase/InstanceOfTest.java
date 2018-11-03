@@ -1,7 +1,7 @@
 package com.company.testCase;
 
 /**
- * Created by eli9 on 9/11/2017.
+ * Created by atomic on 9/11/2017.
  */
 interface IObject{
 

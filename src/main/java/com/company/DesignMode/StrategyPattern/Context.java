@@ -1,7 +1,7 @@
 package com.company.DesignMode.StrategyPattern;
 
 /**
- * Created by eli9 on 9/8/2017.
+ * Created by atomic on 9/8/2017.
  */
 public class Context {
     private Strategy strategy;

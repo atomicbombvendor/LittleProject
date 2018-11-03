@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by eli9 on 4/4/2017.
+ * Created by atomic on 4/4/2017.
  */
 public class TestList {
     public List copyList(List list){

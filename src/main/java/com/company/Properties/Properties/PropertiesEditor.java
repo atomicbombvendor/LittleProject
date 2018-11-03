@@ -1,7 +1,7 @@
 package com.company.Properties.Properties;
 
 /**
- * Created by eli9 on 3/27/2017.
+ * Created by atomic on 3/27/2017.
  */
 public interface PropertiesEditor {
     String[] getPrimaryKey(String primaryKey);

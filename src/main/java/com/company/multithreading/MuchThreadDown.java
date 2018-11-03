@@ -6,12 +6,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by eli9 on 3/21/2017.
+ * Created by atomic on 3/21/2017.
  */
 public class MuchThreadDown {
 
     private String path = "http://sw.bos.baidu.com/sw-search-sp/software/a818cd14ce5ee/npp_7.3.3_Installer.exe";
-    private String targetFilePath = "C:\\Users\\eli9\\Desktop"; //download path
+    private String targetFilePath = "C:\\Users\\atomic\\Desktop"; //download path
     private int threadCount = 3;
 
     /**
@@ -150,7 +150,7 @@ public class MuchThreadDown {
         String path = "http://117.169.69.238/mp3.9ku.com/m4a/186947.m4a";
         String path2 = "http://sc1.111ttt.com/2015/1/01/03/94030951030.mp3";
         String notpad = "http://sw.bos.baidu.com/sw-search-sp/software/a818cd14ce5ee/npp_7.3.3_Installer.exe";
-        String targetFilePath = "C:\\Users\\eli9\\Desktop"; //download path
+        String targetFilePath = "C:\\Users\\atomic\\Desktop"; //download path
         int threadCount = 3;
         System.out.println("Hello World!");
         try {

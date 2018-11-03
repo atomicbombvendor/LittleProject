@@ -3,7 +3,7 @@ package com.company.Lambda;
 import java.util.Optional;
 
 /**
- * Created by eli9 on 3/17/2017.
+ * Created by atomic on 3/17/2017.
  */
 public class TestOptional {
     public static void main(String[] args) {

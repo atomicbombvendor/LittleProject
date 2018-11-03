@@ -1,7 +1,7 @@
 package com.company.testCase;
 
 /**
- * Created by eli9 on 3/27/2017.
+ * Created by atomic on 3/27/2017.
  */
 public class Test2268 {
     public static void doCalc(int input){

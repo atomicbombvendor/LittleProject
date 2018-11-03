@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 /**
- * Created by eli9 on 9/25/2017.
+ * Created by atomic on 9/25/2017.
  */
 public class Bar {
     private String name;

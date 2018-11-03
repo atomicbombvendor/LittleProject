@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * Created by eli9 on 3/16/2017.
+ * Created by atomic on 3/16/2017.
  */
 public class FunctionExam {
     public static int applyExam(int value){

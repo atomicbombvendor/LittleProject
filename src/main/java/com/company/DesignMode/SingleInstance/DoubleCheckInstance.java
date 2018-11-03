@@ -1,7 +1,7 @@
 package com.company.DesignMode.SingleInstance;
 
 /**
- * Created by eli9 on 8/21/2017.
+ * Created by atomic on 8/21/2017.
  */
 public class DoubleCheckInstance {
     private volatile static DoubleCheckInstance instance;

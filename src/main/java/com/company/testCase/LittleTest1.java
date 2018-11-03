@@ -1,7 +1,7 @@
 package com.company.testCase;
 
 /**
- * Created by eli9 on 3/2/2017.
+ * Created by atomic on 3/2/2017.
  */
 public class LittleTest1 {
     public static void main(String[] args) {

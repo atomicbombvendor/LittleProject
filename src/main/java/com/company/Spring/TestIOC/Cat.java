@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * Created by eli9 on 8/24/2017.
+ * Created by atomic on 8/24/2017.
  */
 @Component
 public class Cat implements Animal {

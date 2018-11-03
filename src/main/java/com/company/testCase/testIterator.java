@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by eli9 on 4/17/2017.
+ * Created by atomic on 4/17/2017.
  */
 public class testIterator {
     public static void main(String[] args) {

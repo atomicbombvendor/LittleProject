@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by eli9 on 9/12/2017.
+ * Created by atomic on 9/12/2017.
  */
 public class SqlBuilderTest {
     @Test

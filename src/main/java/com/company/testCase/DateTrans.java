@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by eli9 on 4/11/2017.
+ * Created by atomic on 4/11/2017.
  */
 public class DateTrans {
     public static void getDate() throws ParseException {

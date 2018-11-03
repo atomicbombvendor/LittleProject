@@ -3,7 +3,7 @@ package com.company.InjectTest.SqlBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Created by eli9 on 9/5/2017.
+ * Created by atomic on 9/5/2017.
  */
 @Table(value = "CalcFinancialDataBalanceSheet_Test", primaryKey = {"ReportKey", "PerformanceId"})
 public class CalcFinancialDataBalanceSheet{

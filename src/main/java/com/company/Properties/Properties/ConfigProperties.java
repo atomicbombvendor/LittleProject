@@ -1,7 +1,7 @@
 package com.company.Properties.Properties;
 
 /**
- * Created by eli9 on 8/14/2017.
+ * Created by atomic on 8/14/2017.
  */
 import java.io.*;
 import java.util.Properties;

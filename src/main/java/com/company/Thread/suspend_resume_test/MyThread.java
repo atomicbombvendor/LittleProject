@@ -1,7 +1,7 @@
 package com.company.Thread.suspend_resume_test;
 
 /**
- * Created by eli9 on 2/28/2018./
+ * Created by atomic on 2/28/2018./
  */
 public class MyThread extends Thread {
     private long i = 0;

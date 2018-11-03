@@ -1,7 +1,7 @@
 package com.company.arithmetic;
 
 /**
- * Created by eli9 on 6/20/2017.
+ * Created by atomic on 6/20/2017.
  */
 public class MonkeyPeachs {
     /**

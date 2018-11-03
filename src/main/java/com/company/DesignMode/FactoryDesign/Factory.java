@@ -1,7 +1,7 @@
 package com.company.DesignMode.FactoryDesign;
 
 /**
- * Created by eli9 on 8/21/2017.
+ * Created by atomic on 8/21/2017.
  */
 public class Factory {
     public FatherFactory getBuild(String type){

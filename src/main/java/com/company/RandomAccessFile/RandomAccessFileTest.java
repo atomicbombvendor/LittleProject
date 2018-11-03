@@ -3,7 +3,7 @@ package com.company.RandomAccessFile;
 import java.io.*;
 
 /**
- * Created by eli9 on 3/22/2017.
+ * Created by atomic on 3/22/2017.
  */
 public class RandomAccessFileTest {
 
@@ -108,7 +108,7 @@ public class RandomAccessFileTest {
     }
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\eli9\\Desktop\\com.company.testCase.txt"; //download path
+        String path = "C:\\Users\\atomic\\Desktop\\com.company.testCase.txt"; //download path
         int seekPoint = 2;
         //readRandomPosition(path,seekPoint);
         //testReadLine(path, seekPoint);

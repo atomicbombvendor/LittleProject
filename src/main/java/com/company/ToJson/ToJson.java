@@ -9,7 +9,7 @@ import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 
 /**
- * Created by eli9 on 4/7/2017.
+ * Created by atomic on 4/7/2017.
  */
 public class ToJson {
     private List<Person> listP = new ArrayList<>();

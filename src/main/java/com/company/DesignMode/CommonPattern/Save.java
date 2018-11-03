@@ -1,7 +1,7 @@
 package com.company.DesignMode.CommonPattern;
 
 /**
- * Created by eli9 on 11/1/2017.
+ * Created by atomic on 11/1/2017.
  */
 //保存操作代理给 Editor 方法
 public class Save implements Action {

@@ -1,7 +1,7 @@
 package com.company.Thread.t3;
 
 /**
- * Created by eli9 on 2/9/2018.\非线程安全
+ * Created by atomic on 2/9/2018.\非线程安全
  */
 public class MyThread extends Thread{
     private int count = 5; //count is not shared variable

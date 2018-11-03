@@ -3,7 +3,7 @@ package com.company.testCase;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * Created by eli9 on 4/25/2017.
+ * Created by atomic on 4/25/2017.
  * 测试打印格式
  */
 public class PrintFormat {

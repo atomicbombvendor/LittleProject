@@ -5,7 +5,7 @@ import com.company.DesignMode.ProxyDesign.Image;
 import com.company.InjectTest.Person;
 
 /**
- * Created by eli9 on 9/6/2017.
+ * Created by atomic on 9/6/2017.
  */
 public class StaticsExtends2 extends Person implements FatherFactory {
 

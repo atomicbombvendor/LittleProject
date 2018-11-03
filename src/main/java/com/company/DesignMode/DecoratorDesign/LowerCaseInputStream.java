@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by eli9 on 4/24/2018.
+ * Created by atomic on 4/24/2018.
  */
 public class LowerCaseInputStream extends FilterInputStream {
     /**

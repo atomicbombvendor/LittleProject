@@ -1,7 +1,7 @@
 package com.company.Entity;
 
 /**
- * Created by eli9 on 6/14/2017.
+ * Created by atomic on 6/14/2017.
  */
 public class ExchangeEntity {
     private String ExchangeId;

@@ -1,7 +1,7 @@
 package com.company.ClassExtends;
 
 /**
- * Created by eli9 on 10/30/2017.
+ * Created by atomic on 10/30/2017.
  */
 public class Alienware extends Man {
 

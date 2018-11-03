@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by eli9 on 9/8/2017.
+ * Created by atomic on 9/8/2017.
  */
 public class DataBaseMapper {
     private String tableName;

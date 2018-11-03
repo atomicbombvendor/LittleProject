@@ -1,7 +1,7 @@
 package com.company.time;
 
 /**
- * Created by eli9 on 4/3/2017.
+ * Created by atomic on 4/3/2017.
  */
 
 import java.text.ParseException;

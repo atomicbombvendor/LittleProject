@@ -1,7 +1,7 @@
 package com.company.Entity;
 
 /**
- * Created by eli9 on 4/17/2017.
+ * Created by atomic on 4/17/2017.
  */
 //E表示的范型。表明这个类中可以有0到n个E类型的成员变量。E的类型在实例化时定义
 public class Person<T> extends Father{

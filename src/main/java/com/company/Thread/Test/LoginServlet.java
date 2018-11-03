@@ -1,7 +1,7 @@
 package com.company.Thread.Test;
 
 /**
- * Created by eli9 on 1/12/2018. t4_threadSafe
+ * Created by atomic on 1/12/2018. t4_threadSafe
  */
 public class LoginServlet {
 

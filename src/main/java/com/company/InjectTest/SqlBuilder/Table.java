@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by eli9 on 9/8/2017.
+ * Created by atomic on 9/8/2017.
  */
 //在注解类A上加上注解B，这个注解B只为这个注解类A服务，B称为元注解。元注解有Rentention和Target
 //对注解类的注解可以理解为类的属性

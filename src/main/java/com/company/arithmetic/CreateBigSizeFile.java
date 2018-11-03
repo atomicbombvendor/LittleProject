@@ -9,7 +9,7 @@ import java.text.NumberFormat;
 import java.util.Random;
 
 /**
- * Created by eli9 on 12/27/2017.
+ * Created by atomic on 12/27/2017.
  * 构建一个文本文件data.txt，文件内容为1亿行数据，每行数据有5列，分别为：ID, A, B, C,  D。
  ID为10位整数，从100000000开始，每行唯一，顺序递增；A、B、C、D 均为0到10以内随机正数，小数保留2位；列之间用空格分开。
  如下：

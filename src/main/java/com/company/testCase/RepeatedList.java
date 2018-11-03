@@ -5,7 +5,7 @@ import com.company.ClassExtends.Person;
 import java.util.*;
 
 /**
- * Created by eli9 on 4/8/2017.
+ * Created by atomic on 4/8/2017.
  */
 public class RepeatedList {
 

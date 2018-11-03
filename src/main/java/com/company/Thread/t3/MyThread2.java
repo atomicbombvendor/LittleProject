@@ -1,7 +1,7 @@
 package com.company.Thread.t3;
 
 /**
- * Created by eli9 on 2/9/2018.\
+ * Created by atomic on 2/9/2018.\
  */
 public class MyThread2 extends Thread {
     private int count = 5;//同一个类中的变量，在多个实例对象中是共享的；

@@ -1,7 +1,7 @@
 package com.company.JavaBase;
 
 /**
- * Created by eli9 on 9/7/2017.
+ * Created by atomic on 9/7/2017.
  */
 abstract class AnonymousClass {
     private String name;

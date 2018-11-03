@@ -3,7 +3,7 @@ package com.company.JavaBase.Extends;
 import java.util.*;
 
 /**
- * Created by eli9 on 9/6/2017.
+ * Created by atomic on 9/6/2017.
  */
 public class StaticExtends {
 

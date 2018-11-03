@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
- * Created by eli9 on 4/20/2017.
+ * Created by atomic on 4/20/2017.
  * 测试线程池的程序。这里有四种线程池
  */
 public class DataLoad {

@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * Created by eli9 on 5/17/2017.
+ * Created by atomic on 5/17/2017.
  * 我的一个List<String>中有10W条记录，要把这个List的的内容拼接起来。
  * 我启动5个线程同时处理，每个线程处理2w条记录。然后把5个线程处理的内容拼接起来。
  * 请大家给一个简单的demo。

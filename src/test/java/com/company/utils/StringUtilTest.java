@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import static org.junit.Assert.*;
 
 /**
- * Created by eli9 on 6/5/2017.
+ * Created by atomic on 6/5/2017.
  */
 public class StringUtilTest {
     @Test

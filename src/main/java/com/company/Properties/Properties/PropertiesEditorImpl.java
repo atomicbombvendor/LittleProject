@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Properties;
 
 /**
- * Created by eli9 on 3/24/2017.
+ * Created by atomic on 3/24/2017.
  */
 public class PropertiesEditorImpl implements PropertiesEditor  {
     private String path;

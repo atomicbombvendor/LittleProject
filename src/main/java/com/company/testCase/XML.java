@@ -12,7 +12,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 /**
- * Created by eli9 on 3/1/2017.
+ * Created by atomic on 3/1/2017.
  */
 public class XML {
     private String URL = "http://ownership.company.com/ownershipdata/api/GetData.aspx?function=GetOwnershipData&cusip=001084102&ownertype=MutualFund";

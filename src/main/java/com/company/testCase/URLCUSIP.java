@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by eli9 on 3/6/2017.
+ * Created by atomic on 3/6/2017.
  */
 public class URLCUSIP {
     private URL url;

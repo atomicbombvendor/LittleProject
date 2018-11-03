@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by eli9 on 8/24/2017.
+ * Created by atomic on 8/24/2017.
  */
 @Component //加入IOC容器
 @Aspect // 指定当前类为切面类

@@ -1,7 +1,7 @@
 package com.company.Thread.t7;
 
 /**
- * Created by eli9 on 2/9/2018./
+ * Created by atomic on 2/9/2018./
  * Thread.currentThread() 和 this有差异
  * 附链接 https://www.cnblogs.com/huangyichun/p/6071625.html
  * this是实例的对象的线程，Thread.currentThread是Thread线程，调用实例对象的线程

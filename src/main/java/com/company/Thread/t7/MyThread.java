@@ -1,7 +1,7 @@
 package com.company.Thread.t7;
 
 /**
- * Created by eli9 on 2/9/2018./
+ * Created by atomic on 2/9/2018./
  */
 public class MyThread extends Thread {
 

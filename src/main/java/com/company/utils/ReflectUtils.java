@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
 /**
- * Created by eli9 on 8/22/2017.
+ * Created by atomic on 8/22/2017.
  */
 public class ReflectUtils {
     private final static Object lockObj = new Object();

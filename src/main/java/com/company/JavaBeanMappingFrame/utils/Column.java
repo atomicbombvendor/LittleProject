@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by eli9 on 3/28/2018.
+ * Created by atomic on 3/28/2018.
  * 自定义注解类
  */
 @Target({ElementType.METHOD, ElementType.FIELD})

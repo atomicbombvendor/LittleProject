@@ -1,7 +1,7 @@
 package com.company.Lambda;
 
 /**
- * Created by eli9 on 3/16/2017.
+ * Created by atomic on 3/16/2017.
  */
 @FunctionalInterface
 interface WorkInterface {

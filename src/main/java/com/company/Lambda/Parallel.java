@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import static java.util.stream.Collectors.summingDouble;
 
 /**
- * Created by eli9 on 9/25/2017.
+ * Created by atomic on 9/25/2017.
  */
 public class Parallel {
 

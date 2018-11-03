@@ -1,7 +1,7 @@
 package com.company.ClassExtends;
 
 /**
- * Created by eli9 on 4/3/2017.
+ * Created by atomic on 4/3/2017.
  */
 public class Man extends Person {
     private String man;

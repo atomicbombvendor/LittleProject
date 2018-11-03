@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 
 /**
- * Created by eli9 on 9/18/2017.
+ * Created by atomic on 9/18/2017.
  */
 public interface test {
 

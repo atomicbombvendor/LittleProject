@@ -1,7 +1,7 @@
 package com.company.Lambda;
 
 /**
- * Created by eli9 on 9/25/2017.
+ * Created by atomic on 9/25/2017.
  */
 public class Baz {
     private String type;

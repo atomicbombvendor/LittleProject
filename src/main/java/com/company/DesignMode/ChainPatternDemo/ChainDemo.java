@@ -1,7 +1,7 @@
 package com.company.DesignMode.ChainPatternDemo;
 
 /**
- * Created by eli9 on 8/29/2017.
+ * Created by atomic on 8/29/2017.
  */
 public class ChainDemo {
     public static void main(String[] args) {

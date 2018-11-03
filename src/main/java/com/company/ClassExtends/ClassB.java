@@ -1,7 +1,7 @@
 package com.company.ClassExtends;
 
 /**
- * Created by eli9 on 6/29/2017.
+ * Created by atomic on 6/29/2017.
  */
 public class ClassB {
     public static void main(String[] args) {

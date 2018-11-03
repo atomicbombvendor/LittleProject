@@ -1,7 +1,7 @@
 package com.company.arithmetic.RedBlackTree;
 
 /**
- * Created by eli9 on 9/14/2017.
+ * Created by atomic on 9/14/2017.
  */
 
 /**

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by eli9 on 4/26/2017.
+ * Created by atomic on 4/26/2017.
  * 测试JDBCTemplate的批量更新
  */
 public class testbathSqlJoin {

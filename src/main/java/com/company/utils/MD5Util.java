@@ -4,7 +4,7 @@ package com.company.utils;
 import java.security.MessageDigest;
 
 /**
- * Created by eli9 on 5/26/2017.
+ * Created by atomic on 5/26/2017.
  */
 public class MD5Util {
     public static String getMD5(String value) {

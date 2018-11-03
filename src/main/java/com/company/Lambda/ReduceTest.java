@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by eli9 on 9/25/2017.
+ * Created by atomic on 9/25/2017.
  */
 public class ReduceTest {
 

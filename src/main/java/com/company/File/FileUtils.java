@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Created by eli9 on 5/16/2017.\
+ * Created by atomic on 5/16/2017.\
  */
 public class FileUtils {
 
@@ -80,7 +80,7 @@ public class FileUtils {
     }
 
     public static void test1() {
-        String path = "C:\\Users\\eli9\\Desktop\\test";
+        String path = "C:\\Users\\atomic\\Desktop\\test";
         String filePattern = "^[A-Za-z0-9_]+_Test\\.sql$";
         File[] files = getFiles(path, filePattern);
 
@@ -193,7 +193,7 @@ public class FileUtils {
 
     public static void main(String[] args) {
         //writeFile(ReadXML.getExchangeList());
-        String filePath = "C:\\Users\\eli9\\Desktop\\Tables\\Equity2Tables-20171102";
+        String filePath = "C:\\Users\\atomic\\Desktop\\Tables\\Equity2Tables-20171102";
         String fileName = "^dbo.[A-Za-z0-9_]+\\.sql$";
         List<String> result = getAllFilePath(filePath, fileName);
         result.stream().forEach(s -> System.out.println(s.replace(".sql", "_Test")));
@@ -202,7 +202,7 @@ public class FileUtils {
         //重命名文件
         //test1();
 
-//        String filePath = "C:\\Users\\eli9\\Desktop\\Tables\\Equity2Tables-20171102";
+//        String filePath = "C:\\Users\\atomic\\Desktop\\Tables\\Equity2Tables-20171102";
 //        String filePattern = "^dbo.[A-Za-z0-9_]+\\.sql$";
 //        getAllFilePath(filePath, filePattern)
 //                .forEach(System.out::println);

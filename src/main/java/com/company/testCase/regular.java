@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by eli9 on 3/31/2017.\
+ * Created by atomic on 3/31/2017.\
  */
 public class regular {
     public static void getResult(){
