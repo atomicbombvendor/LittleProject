@@ -3,7 +3,7 @@ package com.company.arithmetic.dijkstra;
 
 import java.math.BigDecimal;
 
-public class DIJKSTRATest {
+public class TicketsDemo {
     public static void main(String[] args) {
 
 //        String file = "../subway_processed.txt";
@@ -29,7 +29,7 @@ public class DIJKSTRATest {
 
         // 找到最短路径
         System.out.println("找到最短路径");
-        graph.findShortest("轻工大学", "园博园");
+        graph.findShortest("轻工大学", "中山公园");
         graph.printShortest();
         System.out.println("需要乘坐" + graph.getShortest().size() + "站");
         System.out.println();
@@ -49,8 +49,5 @@ public class DIJKSTRATest {
         System.out.println("日票" + dayTickets.floatValue());
         System.out.println();
 
-
-        // https://www.cnblogs.com/hapjin/p/5654756.html 图
-        // https://blog.csdn.net/zhang_zp2014/article/details/47863575 堆
     }
 }

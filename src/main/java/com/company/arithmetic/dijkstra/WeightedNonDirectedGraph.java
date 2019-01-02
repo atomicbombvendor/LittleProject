@@ -136,7 +136,7 @@ public class WeightedNonDirectedGraph{
                 startNode.setMultipleRoadLabel(roadLabel);
             }
 
-            //对于无向图而言,起点和终点都要添加边
+            // 地铁是无向图
             endNode.adjEdges.add(new Edge(weight, startNode));
             startNode.adjEdges.add(new Edge(weight, endNode));
         }
@@ -157,6 +157,7 @@ public class WeightedNonDirectedGraph{
     }
 
     public void printShortest(){
+        System.out.println(startVertex.getVertexLabel() + " 到 " + endVertex.vertexLabel);
         printRoute(endVertex);
     }
 
@@ -191,99 +192,6 @@ public class WeightedNonDirectedGraph{
         }
     }
 
-    /** 不是加权图的最短路径 **/
-    public void DFS(String startStationName, String endStationName){
-        if (startStationName.isEmpty() ||
-                endStationName.isEmpty() ||
-                Objects.isNull(weightedGraph.get(startStationName)) ||
-                Objects.isNull(weightedGraph.get(endStationName))){
-            System.out.println("检查输入站点名是否存在或者为空");
-        }
-
-        Queue<Vertex> queue = new LinkedList<>();
-
-        // 保存是否访问过
-        HashSet<String> visited = new HashSet<>();
-        Vertex start = weightedGraph.get(startStationName);
-        start.dist = 0;
-        Vertex end = weightedGraph.get(endStationName);
-        end.dist = 0;
-
-        ((LinkedList<Vertex>) queue).push(start);
-        visited.add(start.getVertexLabel());
-
-        while (!queue.isEmpty()){
-            // get and remove head of queue
-            Vertex current = queue.poll();
-            if (Objects.requireNonNull(current).vertexLabel.equals(endStationName)){
-                break;
-            }
-
-            List<Edge> edges = current.adjEdges;
-            for (Edge edge : edges){
-
-                Vertex childVertex = edge.edgeVertex;
-                // 如果该站点可达，并且没有访问过
-                if (childVertex.dist == Double.MAX_VALUE){
-                    childVertex.dist = current.dist + edge.weight;
-                    childVertex.preNode = current;
-                }
-
-                if (!visited.contains(childVertex.vertexLabel)){
-                    double nowDist = current.dist + edge.weight;
-                    if(nowDist < childVertex.dist) {
-                        childVertex.dist = nowDist;
-                        childVertex.preNode = current;
-                        visited.add(childVertex.vertexLabel);
-                        queue.add(edge.edgeVertex);
-                    }
-                }
-            }
-        }
-
-        System.out.println(String.format("从%s 到 %s 的最短路线:", startStationName, endStationName));
-        printRoute(end);
-    }
-
-    /** 从初始节点开始递归更新邻接表 有问题 */
-    private void updateChildren(Vertex v) {
-        if (v==null) {
-            return;
-        }
-
-        if (weightedGraph.get(v.vertexLabel)==null||weightedGraph.get(v.vertexLabel).adjEdges.size()==0) {
-            return;
-        }
-
-        List<Vertex> childrenList = new LinkedList<>();
-        for(Edge e:weightedGraph.get(v.vertexLabel).adjEdges)
-        {
-            Vertex childVertex = e.edgeVertex;
-
-            //如果子节点之前未知，则把当前子节点假如更新列表
-            if(!childVertex.visited)
-            {
-                childVertex.visited = true;
-                childVertex.dist = v.dist + e.weight;
-                childVertex.preNode = v;
-                childrenList.add(childVertex);
-            }
-
-            //子节点之前已知，则比较子节点的ajduDist&&nowDist
-            double nowDist = v.dist + e.weight;
-            if(nowDist < childVertex.dist) {
-                childVertex.dist = nowDist;
-                childVertex.preNode = v;
-            }
-        }
-
-        //更新每一个子节点
-        for(Vertex vc:childrenList)
-        {
-            updateChildren(vc);
-        }
-    }
-
     private void init(BinaryHeap<Vertex> heap){
         //源点到其自身的距离为0
         startVertex.dist = 0.0;
@@ -293,9 +201,7 @@ public class WeightedNonDirectedGraph{
     }
 
     private void printRoute(Vertex end){
-        System.out.println("距离是" + BigDecimal.valueOf(end.dist).setScale(2, RoundingMode.HALF_UP).floatValue() + "KM");
 
-        // 置入路线到栈
         Stack<Vertex> route = new Stack<>();
         Vertex index = end;
         System.out.print("最短路线: ");
@@ -311,6 +217,7 @@ public class WeightedNonDirectedGraph{
             System.out.print(formatRoute(current, next) + " >> ");
         }
         System.out.println("结束");
+        System.out.println("距离是" + BigDecimal.valueOf(end.dist).setScale(2, RoundingMode.HALF_UP).floatValue() + "KM");
     }
 
     private String formatRoute(Vertex current, Vertex next){
@@ -322,16 +229,6 @@ public class WeightedNonDirectedGraph{
             return current.vertexLabel + "换乘" + next.roadLabel;
         }else{
             return current.getRoadInfo();
-        }
-    }
-
-    public void showDistance(){
-        for (Vertex v : weightedGraph.values()) {
-            printPath(v);
-            System.out.println();
-            System.out.println(v.roadLabel + " " + v.vertexLabel + "站 -> " + startVertex.roadLabel +
-                    " " + startVertex.vertexLabel + " 最短距离: " + BigDecimal.valueOf(v.dist)
-                    .setScale(2, RoundingMode.HALF_UP).floatValue());
         }
     }
 
@@ -412,15 +309,6 @@ public class WeightedNonDirectedGraph{
         while (!stationNames.empty()){
             String info = stationNames.pop();
             System.out.print(info + " ");
-        }
-    }
-
-    /**
-     * 打印源点到 end 顶点的 最短路径
-     */
-    private void printPath(Vertex end) {
-        if(end.preNode != null) {
-            printPath(end.preNode);
         }
     }
 
