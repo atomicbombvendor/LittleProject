@@ -1,11 +1,15 @@
 package com.company.Thread.ObjectPool;
 
-import com.company.Dao.TestC;
 import com.sun.org.apache.xml.internal.utils.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 public class ObjectPoolTest extends ObjectPool {
+
+    public static void main(String[] args) {
+        ObjectPoolTest test = new ObjectPoolTest();
+        test.testGenericObjectPool();
+    }
 
     public void testGenericObjectPool(){
         MyPoolableObjectFactory factory = new MyPoolableObjectFactory();

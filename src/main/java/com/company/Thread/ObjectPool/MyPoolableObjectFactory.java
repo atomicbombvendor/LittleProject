@@ -11,6 +11,7 @@ public class MyPoolableObjectFactory implements PooledObjectFactory<TestConnecti
      */
     @Override
     public PooledObject<TestConnection> makeObject() throws Exception {
+        System.out.println(Thread.currentThread().getName() + " Pool: Construct Object");
         TestConnection connection = new TestConnection();
         return new DefaultPooledObject<>(connection);
     }
@@ -20,6 +21,7 @@ public class MyPoolableObjectFactory implements PooledObjectFactory<TestConnecti
      */
     @Override
     public void destroyObject(PooledObject<TestConnection> pooledObject) throws Exception {
+        System.out.println(Thread.currentThread().getName() + " Pool: Disconnect");
         pooledObject.getObject().disConnect();
     }
 
@@ -28,6 +30,7 @@ public class MyPoolableObjectFactory implements PooledObjectFactory<TestConnecti
      */
     @Override
     public boolean validateObject(PooledObject<TestConnection> pooledObject) {
+        System.out.println(Thread.currentThread().getName() + " Pool: Check is connect");
         return pooledObject.getObject().isConnect();
     }
 
@@ -36,6 +39,7 @@ public class MyPoolableObjectFactory implements PooledObjectFactory<TestConnecti
      */
     @Override
     public void activateObject(PooledObject<TestConnection> pooledObject) throws Exception {
+        System.out.println(Thread.currentThread().getName() + " Pool: Start Connect");
         pooledObject.getObject().connect();
     }
 
