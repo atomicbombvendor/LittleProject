@@ -5,6 +5,7 @@ import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.File;
@@ -18,7 +19,12 @@ import java.util.stream.Collectors;
 
 public class SFTPMultipleService {
 
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(SFTPMultipleService.class);
+
     private static final Integer CTRL_AND_ZIP_IS_DOUBLE = 2;
+    private static final String ZIP_POST_SUFFIX = ".zip";
+    private static final String CTRL_POST_SUFFIX = ".crtl";
+    private static final String DEFAULT_LOCAL_FILE_PATH = ".crtl";
 
     public List<String> getUploadedFiles(List<String> localPathNeedUpload){
 
@@ -54,37 +60,12 @@ public class SFTPMultipleService {
 
         File file = new File(fileNeedUpload);
         String fileName = file.getName();
-        String ftpFolder = getFTPDirectoryTemporary(fileNeedUpload) + getFtpFolder(fileNeedUpload);
+        String ftpFolder = Paths.get(fileNeedUpload).getParent().toString().replace(DEFAULT_LOCAL_FILE_PATH, "")
+                .replace("\\", "/");
 
         return ftpFolder + "/" + fileName;
     }
 
-    /**
-     * Temporary code until 2019-01-17
-     * Jira: https://msjira.morningstar.com/browse/MOCAL-6411
-     * todo remove this code after 2019-01-10
-     */
-    private String getFTPDirectoryTemporary(String fileNeedUpload) {
-
-        if (fileNeedUpload.contains(FeedEnum.TSO.getName())
-            || fileNeedUpload.contains(FeedEnum.MARKET_CAP.getName())
-            || fileNeedUpload.contains(FeedEnum.REFERENCE.getName())) {
-            return TEST_FTP_DIRECTORY;
-        }
-        return FTP_DIRECTORY;
-    }
-
-    private String getFtpFolder(String fileNeedUpload) {
-        String ftpFolder;
-        if (fileNeedUpload.contains(FeedEnum.REFERENCE.getName())) {
-            ftpFolder = Paths.get(fileNeedUpload).getParent().toString().replace(DEFAULT_REFERENCE_FILE_PATH, "")
-                            .replace("\\", "/");
-        } else {
-            ftpFolder = Paths.get(fileNeedUpload).getParent().toString().replace(DEFAULT_LOCAL_FILE_PATH, "")
-                            .replace("\\", "/");
-        }
-        return ftpFolder;
-    }
 
     private List<String> collectResult(List<String> pathNeedUpload, CompletionService<String> completionService){
         List<String> result = Collections.synchronizedList(new ArrayList<>());

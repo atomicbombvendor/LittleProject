@@ -1,7 +1,9 @@
 package com.company.Thread.ObjectPoolAndLock;
 
+import com.company.Thread.TestFuture.RetriableException;
+import com.company.Thread.TestFuture.RetryPolicy;
 import com.jcraft.jsch.*;
-
+import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +12,11 @@ import java.util.Properties;
 
 public class SFTPService {
 
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(SFTPService.class);
+
+    private static final String ftpServer = "";
+    private static final String ftpUsername = "";
+    private static final String ftpPassword = "";
     private Session session;
     private ChannelSftp channel;
     private JSch jsch = new JSch();
@@ -48,7 +55,7 @@ public class SFTPService {
         log.info("Start to send file to SFTP. local={} dest={}", local, dest);
 
         if (!new File(local).exists()){
-            log.error(local + " is not exists");
+            System.out.println(local + " is not exists");
             return null;
         }
 
@@ -56,11 +63,8 @@ public class SFTPService {
             SyncCreateDir.createDirWhenNotExist(channel, Paths.get(dest).getParent().toString().replace("\\", "/"));
             RetryPolicy.get(3, true)
                        .execute(() -> sendLocalFileFunction(local, dest), null);
-        }catch (FTPExcetion ftpExcetion){
+        }catch (Exception ftpExcetion){
             log.error("create ftp dir unknown error. local={} dest={} error_message={}", local, dest, ftpExcetion);
-            return null;
-        } catch (Exception e) {
-            log.error("send sftp fail after 3 time retries. local={} dest={} error_message={}", local, dest, e);
             return null;
         }
         return local;
@@ -88,55 +92,6 @@ public class SFTPService {
         }
     }
 
-    /**
-     * Send sftp file
-     *
-     * @param bucketName s3.feed.bucketname
-     * @param fileKey    s3.feed.file key
-     * @param dest       ftp path: /A/B/C/D.zip
-     */
-    public void sendS3File(String bucketName, String fileKey, String dest) {
-
-        log.info("Start send file to SFTP. bucket_name={} file_key={} ftp_path={}", bucketName, fileKey, dest);
-
-        try {
-            RetryPolicy.get(3, true)
-                       .execute(() -> sendS3FileFunction(bucketName, fileKey, dest), null);
-        } catch (Exception e) {
-            log.error(
-                "send sftp fail after retry 3 times. bucket_name={} file_key={} ftp_path={} error_message={}",
-                bucketName,
-                fileKey,
-                dest,
-                e);
-        }
-    }
-
-    /**
-     * Send sftp file
-     *
-     * @param bucketName s3.feed.bucketname
-     * @param fileKey    s3.feed.file key
-     * @param dest       ftp path: /A/B/C/D.zip
-     */
-    private void sendS3FileFunction(String bucketName, String fileKey, String dest) {
-
-        SftpProgressMonitorImpl monitor = new SftpProgressMonitorImpl();
-        if (channel == null) {
-            log.error("SFTP not connected cannot send");
-            return;
-        }
-        InputStream inputStream;
-        try {
-            S3Object s3Object = S3Utils.getS3Obj(bucketName, fileKey);
-            inputStream = s3Object.getObjectContent();
-            channel.put(inputStream, dest, monitor, ChannelSftp.OVERWRITE);
-        } catch (IOException | SftpException e) {
-            log.error("send sftp fail. bucket_name={} file_key={} ftp_path={}", bucketName, fileKey, dest);
-            throw new RetriableException("Send SFTP file error for IOException", e);
-        }
-    }
-
     public void closeChannel() {
 
         if (channel != null) {
@@ -160,7 +115,7 @@ public class SFTPService {
 
 class SyncCreateDir {
 
-    private static final Logger log = LoggerFactory.getLogger(SyncCreateDir.class);
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(SyncCreateDir.class);
 
     public static void createDirWhenNotExist(ChannelSftp channel, String directory) throws Exception {
 
@@ -191,7 +146,8 @@ class SyncCreateDir {
                 log.info("folder " + directory + " already exists");
             }else {
                 cdHome(channel);
-                throw new FTPExcetion(ExceptionCode.FTP_UNKNOWN_EXCEPTION, "create " + directory + " error. error_message={}", e);
+                throw new Exception("create " + directory + " error. error_message={}",
+                        e);
             }
         }
         cdHome(channel);
