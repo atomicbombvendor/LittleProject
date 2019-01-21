@@ -4,9 +4,8 @@ import com.company.Thread.TestFuture.RetriableException;
 import com.company.Thread.TestFuture.RetryPolicy;
 import com.jcraft.jsch.*;
 import org.slf4j.LoggerFactory;
+
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -79,16 +78,17 @@ public class SFTPService {
     public void sendLocalFileFunction(String local, String dest) {
 
         SftpProgressMonitorImpl monitor = new SftpProgressMonitorImpl();
+        try {
         if (!isConnect()) {
             log.error("SFTP not connected cannot send. Connect again");
-            connect();
+            if (connect()){
+                throw new SftpException(111, "Send SFTP file error for connect error");
+            }
         }
-
-        try {
             channel.put(local, dest, monitor, ChannelSftp.OVERWRITE);
         } catch (SftpException e) {
             log.error("send sftp fail. local={} dest={} error_message={}", local, dest, e);
-            throw new RetriableException("Send SFTP file error for IOException", e);
+            throw new RetriableException("Send SFTP file error", e);
         }
     }
 

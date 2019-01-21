@@ -8,5 +8,29 @@
     <artifactId>littleproject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    
+    <properties>
+        <java.version>1.8</java.version>
+        <jdk.version>1.8</jdk.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <debug>true</debug>
+                    <debuglevel>lines,vars,source</debuglevel>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                        <arg>-Xlint:-processing</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

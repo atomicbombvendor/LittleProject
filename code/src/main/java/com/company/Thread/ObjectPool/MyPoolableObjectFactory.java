@@ -11,7 +11,7 @@ public class MyPoolableObjectFactory implements PooledObjectFactory<TestConnecti
      */
     @Override
     public PooledObject<TestConnection> makeObject() throws Exception {
-        System.out.println(Thread.currentThread().getName() + " Pool: Construct Object");
+        System.out.println(Thread.currentThread().getName() + " Pool: Construct New Object");
         TestConnection connection = new TestConnection();
         return new DefaultPooledObject<>(connection);
     }

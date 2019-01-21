@@ -24,7 +24,7 @@ public class ObjectToolMultipleTest {
 
     public List<String> getResult(List<String> inputs) {
 
-        int threadNum = 6;
+        int threadNum = 20;
         ExecutorService executor = Executors.newFixedThreadPool(threadNum);
         CompletionService<String> service = new ExecutorCompletionService<>(executor);
         GenericObjectPool<TestConnection> objectPool = getObjectPool(threadNum);
@@ -42,6 +42,7 @@ public class ObjectToolMultipleTest {
     private Callable<String> getTask(GenericObjectPool<TestConnection> objectPool, String input) {
         return () -> {
             TestConnection test = objectPool.borrowObject();
+            System.out.println("Id: " + test.getId());
             String result = test.getValue(input);
             objectPool.returnObject(test);
             return result;
@@ -52,9 +53,13 @@ public class ObjectToolMultipleTest {
         MyPoolableObjectFactory factory = new MyPoolableObjectFactory();
 
         GenericObjectPoolConfig config = new GenericObjectPoolConfig();
-        config.setMaxTotal(threadNum-3);
-        config.setMaxIdle(threadNum-3);
-        config.setMinIdle(threadNum-3);
+        // 最大存活数量需要小于等于maxTotal。
+        // 若 maxIdle>maxTotal，则最大存活数量只会等于maxTotal
+        // 最大数量
+        config.setMaxTotal(2);
+        // 最大存活
+        config.setMaxIdle(4);
+        config.setMinIdle(0);
 
         return new GenericObjectPool<>(
                 factory, config
@@ -73,6 +78,10 @@ public class ObjectToolMultipleTest {
         return result;
     }
 
+    /**
+     * 使用11个输入对象，对象池池构造了11个对象。
+     * @return
+     */
     private static List<String> mockInputs() {
         List<String> inputs = new ArrayList<>();
         inputs.add("ad");
@@ -85,7 +94,13 @@ public class ObjectToolMultipleTest {
         inputs.add("add");
         inputs.add("ad4");
         inputs.add("ad5");
-        inputs.add("ad6");
+        inputs.add("ed100");
+        inputs.add("ed111");
+        inputs.add("ed122");
+        inputs.add("ed13");
+        inputs.add("ed144");
+        inputs.add("ed155");
+        inputs.add("ed166");
 
         return inputs;
     }

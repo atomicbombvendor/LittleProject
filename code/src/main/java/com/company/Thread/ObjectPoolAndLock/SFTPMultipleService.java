@@ -21,10 +21,6 @@ public class SFTPMultipleService {
 
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(SFTPMultipleService.class);
 
-    private static final Integer CTRL_AND_ZIP_IS_DOUBLE = 2;
-    private static final String ZIP_POST_SUFFIX = ".zip";
-    private static final String CTRL_POST_SUFFIX = ".crtl";
-    private static final String DEFAULT_LOCAL_FILE_PATH = ".crtl";
 
     public List<String> getUploadedFiles(List<String> localPathNeedUpload){
 
@@ -35,11 +31,7 @@ public class SFTPMultipleService {
             new ExecutorCompletionService<>(executor);
 
         for (String aPathNeedUpload : localPathNeedUpload) {
-            String zipFile = aPathNeedUpload.concat(ZIP_POST_SUFFIX);
-            completionService.submit(getTask(pool, zipFile));
-
-            String ctrlFile = aPathNeedUpload.concat(CTRL_POST_SUFFIX);
-            completionService.submit(getTask(pool, ctrlFile));
+            completionService.submit(getTask(pool, aPathNeedUpload));
         }
 
         executor.shutdown();
@@ -56,21 +48,17 @@ public class SFTPMultipleService {
         };
     }
 
+    @SuppressWarnings("Unchecked")
     private String getFTPFileName(String fileNeedUpload){
-
-        File file = new File(fileNeedUpload);
-        String fileName = file.getName();
-        String ftpFolder = Paths.get(fileNeedUpload).getParent().toString().replace(DEFAULT_LOCAL_FILE_PATH, "")
-                .replace("\\", "/");
-
-        return ftpFolder + "/" + fileName;
+        // todo add some code to get ftp file path
+        return fileNeedUpload;
     }
 
 
     private List<String> collectResult(List<String> pathNeedUpload, CompletionService<String> completionService){
         List<String> result = Collections.synchronizedList(new ArrayList<>());
 
-        for (int i = 0; i < pathNeedUpload.size() * CTRL_AND_ZIP_IS_DOUBLE; i++) {
+        for (int i = 0; i < pathNeedUpload.size(); i++) {
             try {
                 result.add(completionService.take().get());
             }catch (InterruptedException | ExecutionException e) {
