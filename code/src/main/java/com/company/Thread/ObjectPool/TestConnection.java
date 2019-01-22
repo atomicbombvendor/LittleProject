@@ -11,8 +11,6 @@ public class TestConnection {
         int intValL = (int)(Math.random()*26+97);
         //生成一个65-90之间的int类型整数--为了生成大写字母
         int intValU = (int)(Math.random()*26+65);
-        //生成一个30-39之间的int类型整数--为了生成数字
-        int intValN = (int)(Math.random()*10+48);
 
         StringBuilder sb = new StringBuilder();
         this.id = sb.append((char)intValL)

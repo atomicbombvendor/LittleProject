@@ -24,6 +24,7 @@ public class SFTPMultipleService {
 
     public List<String> getUploadedFiles(List<String> localPathNeedUpload){
 
+        //规定线程的数量
         int threadNum = localPathNeedUpload.size() > 100 ? 10: 6;
         GenericObjectPool<SFTPService> pool = getObjectPool(threadNum);
         ExecutorService executor = Executors.newFixedThreadPool(localPathNeedUpload.size() > 100 ? 10: 6);
@@ -77,6 +78,7 @@ public class SFTPMultipleService {
         GenericObjectPoolConfig config = new GenericObjectPoolConfig();
         config.setMaxTotal(threadNum);
         config.setMaxIdle(threadNum);
+        config.setMinIdle(0);
 
         return new GenericObjectPool<>(
             factory, config

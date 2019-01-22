@@ -3,6 +3,7 @@ package com.company.Thread.ObjectPoolAndLock;
 import com.company.Thread.TestFuture.RetriableException;
 import com.company.Thread.TestFuture.RetryPolicy;
 import com.jcraft.jsch.*;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -115,55 +116,71 @@ public class SFTPService {
 
 class SyncCreateDir {
 
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(SyncCreateDir.class);
+    private static final Logger log = LoggerFactory.getLogger(SyncCreateDir.class);
 
-    public static void createDirWhenNotExist(ChannelSftp channel, String directory) throws Exception {
+    public static boolean createDirWhenNotExist(ChannelSftp channel, String directory) throws
+            Exception {
 
-        if (isDirExists(directory, channel)) {
-            return;
-        }
-        log.info("create ftp folder " + directory);
-        String[] pathArray = directory.split("/");
-        try {
-            for (String path : pathArray) {
-                if (path.isEmpty()) {
-                    continue;
-                }
+        if (isDirExist(directory, channel)) {
+            return true;
+        } else {
+            synchronized (SyncCreateDir.class) {
+                if (!isDirExist(directory, channel)) {
+                    log.info("create ftp folder " + directory);
+                    String[] pathArray = directory.split("/");
+                    try {
+                        for (String path : pathArray) {
+                            if (path.isEmpty()) {
+                                continue;
+                            }
 
-                if (isDirExists(path, channel)) {
-                    channel.cd(path);
-                } else {
-                    synchronized (SyncCreateDir.class) {
-                        if (!isDirExists(path, channel)) {
-                            channel.mkdir(path);
-                            channel.cd(path);
+                            if (isDirExist(path, channel)) {
+                                channel.cd(path);
+                            } else {
+                                channel.mkdir(path);
+                                channel.cd(path);
+                            }
+                        }
+                    } catch (SftpException e) {
+                        if (e.getMessage().toLowerCase().contains("file already exists")) {
+                            log.info("folder " + directory + " already exists");
+                        } else {
+                            cdHome(channel);
+                            throw new Exception("create " + directory + " error. error_message={}",
+                                    e);
                         }
                     }
                 }
             }
-        } catch (SftpException e) {
-            if (e.getMessage().toLowerCase().contains("file already exists")) {
-                log.info("folder " + directory + " already exists");
-            }else {
-                cdHome(channel);
-                throw new Exception("create " + directory + " error. error_message={}",
-                        e);
-            }
         }
+
         cdHome(channel);
+        if (!isDirExist(directory, channel)) {
+            log.error("fail to create ftp folder " + directory);
+            return false;
+        } else {
+            log.info("success to create ftp folder " + directory);
+        }
+        return true;
     }
 
-    private static boolean isDirExists(String directory, ChannelSftp channelInput){
+    public static boolean isDirExist(String directory, ChannelSftp sftp) {
+
+        boolean isDirExistFlag = false;
         try {
-            SftpATTRS sftpATTRS = channelInput.lstat(directory);
+            SftpATTRS sftpATTRS = sftp.lstat(directory);
+            isDirExistFlag = true;
             return sftpATTRS.isDir();
-        } catch (SftpException e) {
-            log.info(directory + " is not a folder or is not exist");
+        } catch (Exception e) {
+            if ("no such file".equals(e.getMessage().toLowerCase())) {
+                isDirExistFlag = false;
+            }
         }
-        return false;
+        return isDirExistFlag;
     }
 
     private static void cdHome(ChannelSftp channelInput) throws SftpException {
+
         channelInput.cd(channelInput.getHome());
     }
 }
