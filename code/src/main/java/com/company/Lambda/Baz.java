@@ -6,10 +6,16 @@ package com.company.Lambda;
 public class Baz {
     private String type;
     private Double typeValue;
+    private String typ;
 
     public Baz(String type, Double typeValue) {
         this.type = type;
         this.typeValue = typeValue;
+    }
+
+    public Baz(String type, String typ){
+        this.type = type;
+        this.typ = typ;
     }
 
     public String getType() {
@@ -26,5 +32,13 @@ public class Baz {
 
     public void setTypeValue(Double typeValue) {
         this.typeValue = typeValue;
+    }
+
+    public String getTyp() {
+        return typ;
+    }
+
+    public void setTyp(String typ) {
+        this.typ = typ;
     }
 }

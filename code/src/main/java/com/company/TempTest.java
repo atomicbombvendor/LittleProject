@@ -1,7 +1,11 @@
 package com.company;
 
+import org.junit.Assert;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ZZ on 2017/6/18.
@@ -9,15 +13,11 @@ import java.time.format.DateTimeFormatter;
 public class TempTest {
 
     public static void main(String[] args) {
-        String r = String.format("%d-%d",
-                LocalDate.now().getYear(),
-                LocalDate.now().minusMonths(1L).getMonthValue());
-        System.out.println(r);
+        List<String> ss = new ArrayList<>(10);
+        Assert.assertTrue(ss.isEmpty());
 
-        String fileName = "Monthly_AverageCurrencyExchangeRate_YYYY-M";
-        String r2 =
-                LocalDate.now().minusMonths(1L).format(DateTimeFormatter.ofPattern("YYYY-M"));
-        System.out.println(fileName.replace("YYYY-M", r2));
+        List<String> ss2 = null;
+        Assert.assertTrue(ss2.isEmpty());
     }
 
 }
