@@ -1,11 +1,13 @@
 package com.company.ExceptionOrder;
 
 import com.company.Entity.Person;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.dom4j.Document;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Arrays;
 
 /**
  * Created by ZZ on 2017/3/26.
@@ -118,8 +120,8 @@ public class ExceptionOrder {
             System.out.println(11);
             throw new Exception("aaa");
         } catch (Exception e) {
-            System.out.println(org.apache.commons.lang.exception.ExceptionUtils
-                    .getFullStackTrace(e));
+            System.out.println(Arrays.toString(ExceptionUtils
+                    .getRootCauseStackTrace(e)));
         }
     }
 

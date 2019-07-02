@@ -1,7 +1,7 @@
 package com.company.JavaBeanMappingFrame.dao;
 
 import com.company.JavaBeanMappingFrame.entity.XOIMessageUpdate;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.util.StringUtil;
 import org.junit.Assert;
 import org.junit.Test;

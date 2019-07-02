@@ -1,6 +1,6 @@
 package com.company.testCase;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by eli9 on 4/25/2017.
