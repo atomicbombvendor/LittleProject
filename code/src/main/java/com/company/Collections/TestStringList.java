@@ -8,17 +8,19 @@ import java.util.Map;
 /**
  * Created by eli9 on 4/4/2017.
  */
-public class TestList {
+public class TestStringList {
     public List copyList(List list){
-        List<Integer> listC = new ArrayList<>();
+
+        List<String> listC = new ArrayList<>();
         listC.addAll(list);
         return listC;
     }
 
     public List copyListByForeach(List list){
-        List<Integer> listC = new ArrayList<>();
+
+        List<String> listC = new ArrayList<>();
         for (Object o:list) {
-            listC.add((Integer)o);
+            listC.add(o.toString());
         }
         return listC;
     }
@@ -38,25 +40,27 @@ public class TestList {
     }
 
     public static void main(String[] args) {
-        TestList t1 = new TestList();
-        List<Integer> list1 = new ArrayList<>();
-        Integer i1 = 3;
-        Integer i2 = 4;
-        Integer i3 = 5;
-        Integer i4 = 6;
-        Integer i5 = 7;
-        Integer i6 = 8;
-        list1.add(i1);list1.add(i2); list1.add(i3); list1.add(i4);
-        list1.add(i5);list1.add(i6);
-        List<Integer> list2 = t1.copyListByForeach(list1);
-        list2.remove(0);
-        t1.printList(list2);
-        t1.printList(list1);
 
-        list2 = t1.copyList(list1);
-        list2.remove(0);
+        TestStringList t1 = new TestStringList();
+        List<String> list1 = new ArrayList<>();
+        list1.add("AAA1");list1.add("AAA2"); list1.add("AAA3"); list1.add("AAA4");
+        list1.add("AAA5");list1.add("AAA6");
+        List<String> list2 = t1.copyListByForeach(list1);
+        System.out.println("print hash");
         t1.printHash(list2);
         t1.printHash(list1);
+
+        list2 = t1.copyList(list1);
+        System.out.println("print hash");
+        t1.printHash(list2);
+        t1.printHash(list1);
+        System.out.println("浅复制");
+
+        System.out.println("print hash");
+        list1.set(0, "BDD");
+        t1.printHash(list2);
+        t1.printHash(list1);
+        System.out.println("修改对象不影响");
 
         Map map = new HashMap();
 

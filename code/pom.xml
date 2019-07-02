@@ -169,7 +169,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>25.1-jre</version>
+            <version>27.1-jre</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
@@ -289,7 +289,11 @@
             <artifactId>disruptor</artifactId>
             <version>3.4.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.6.Final</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
